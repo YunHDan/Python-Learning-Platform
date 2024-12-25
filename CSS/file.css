@@ -1,0 +1,408 @@
+@font-face{
+    font-family: 站点;
+    src:url(../FONT/FZJZJW.TTF);
+}
+.footer_cls {
+    border-style: solid;
+    border-color: black;
+    margin: 5px;
+    border-radius: 5px;
+    position: relative;
+}
+.logo_cls {
+    border-style: solid;
+    border-color: white;
+    overflow: hidden;
+    transition-property: border-radius;
+    transition-duration: 1.2s;
+    border-radius: 25px;
+}
+.logo_cls:hover {
+    border-radius: 50%;
+}
+.middle_cls {
+    display: flex;
+}
+.hr_cls {
+    border: none;
+    border-top: 3px dashed black;
+    margin: 20px 0; 
+}
+.head_hr_cls {
+    border: none;
+    border-top: 3px solid black;
+    margin: 5px;
+}
+.header_cls {
+    display: flex;
+}
+.main_cls {
+    border-style: solid;
+    border-color: rgba(59, 30, 30, 0.45);
+    height: 100%;
+    width: 100%;  
+    border-width: 5px;
+    border-radius: 5px;
+}
+.link_cls {
+    text-decoration: none;
+    font-family: '幼圆';
+    font-weight: bold;
+    font-size: 25px;
+    margin: 5px;
+    color: rgb(26, 88, 78);
+}
+.list_cls {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+.list_li_cls {
+    text-decoration: none;
+    font-family: '幼圆';
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(246, 148, 116);
+    transition-property: color;
+    transition-duration: 0.5s;
+    position: relative;
+    top: 25%;
+}
+.list_li_cls:hover {
+    color: rgb(216, 34, 14);
+}
+.nav_li_cls {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    height: 35px;
+    font-size: 25px;
+    font-family: '幼圆';
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(81, 80, 80);
+    transition-property: background-color;
+    transition-duration: 1.2s;
+    padding: 5px;
+    border-radius: 10px;
+}
+.nav_li_cls:hover {
+    background-color: lightskyblue; 
+}
+.head_cls {
+    font-size: 80px;
+    font-family: 站点;
+    margin: 5px;
+    height: 100px;
+    position: absolute;
+    top: 1%;
+    left: 19%;
+    width: 600px;
+}
+.toc_nav_cls {
+    border-style: solid;
+    border-color: rgba(59, 30, 30, 0.45);
+    border-width: 5px;
+    border-radius: 5px;
+    border-right: none;
+}
+.nav_cls {
+    height: 15%;
+    width: 100%;   
+}
+.list2_cls {
+    list-style-type: none;
+    padding: 20px;
+    width: 350px;
+}
+.toc_cls {
+    height: 50px;
+    width: 350px;
+    margin: 5px;
+}
+.h2_cls {
+    font-size: 50px;
+    margin: 5px;   
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+}
+.h3_cls {
+    font-size: 25px;
+    margin: 5px;
+    font-family: '幼圆';
+    font-weight: bold;
+}
+.text_cls {
+    margin: 45px;
+    font-family: "幼圆";
+    font-size: 25px;
+}
+.footer_text_cls {
+    margin: 25px;
+    font-family: "幼圆";
+    font-size: 25px;
+    color: rgb(243, 109, 109);
+}
+/* 通用代码块样式 */
+pre {
+    background-color: #2d2d2d; /* 背景色：深灰 */
+    color: #f8f8f2; /* 默认文字颜色：白色 */
+    padding: 15px; /* 内边距 */
+    border-radius: 8px; /* 圆角 */
+    overflow-x: auto; /*横向滚动条*/
+    font-family: 'Fira Code', 'Courier New', monospace; /* 等宽字体 */
+    font-size: 25px;
+    line-height: 1.6;
+
+    max-width: 80%; /* 代码块最大宽度设置为页面宽度的80% */
+    margin: 20px auto; /* 上下各留20px间距，并居中 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加轻微的阴影效果 */
+}
+
+/* 默认代码文字颜色 */
+code {
+    color: #f8f8f2;
+}
+
+/* 关键词 (如 def, class, return 等) */
+code .keyword {
+    color: #66d9ef; /* 浅蓝色 */
+    font-weight: bold;
+}
+
+/* 函数名 */
+code .function {
+    color: #a6e22e; /* 绿色 */
+    font-weight: bold;
+}
+
+/* 装饰器 (如 @staticmethod, @property) */
+code .decorator {
+    color: #fd971f; /* 橙色 */
+    font-style: italic;
+}
+
+/* 内置函数 (如 print, len, range) */
+code .builtin {
+    color: #ff79c6; /* 粉色 */
+    font-weight: bold;
+}
+
+/* 字符串 (单引号、双引号、三引号) */
+code .string {
+    color: #e6db74; /* 黄色 */
+}
+
+/* 字符串中的转义字符 (如 \n, \t) */
+code .escape {
+    color: #ae81ff; /* 紫色 */
+    font-weight: bold;
+}
+
+/* 数字 (整数、浮点数) */
+code .number {
+    color: #ae81ff; /* 紫色 */
+}
+
+/* 布尔值 (True, False) 和 None */
+code .boolean {
+    color: #f92672; /* 红色 */
+    font-weight: bold;
+}
+
+/* 注释 */
+code .comment {
+    color: #75715e; /* 灰色 */
+    font-style: italic;
+}
+
+/* 操作符 (如 +, -, *, /, ==, !=) */
+code .operator {
+    color: #f92672; /* 红色 */
+    font-weight: bold;
+}
+
+/* 异常类 (如 ValueError, Exception) */
+code .exception {
+    color: #f92672; /* 红色 */
+    font-style: italic;
+}
+
+/* 模块名或导入语句 */
+code .module {
+    color: #66d9ef; /* 浅蓝色 */
+    font-weight: bold;
+}
+
+/* 标识符 (如变量名、自定义类名) */
+code .identifier {
+    color: #a6e22e; /* 绿色 */
+}
+
+/* 参数 (函数参数或类的实例属性) */
+code .parameter {
+    color: #fd971f; /* 橙色 */
+    font-style: italic;
+}
+.back {
+    float: right;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    transition-property: color;
+    transition-duration: 0.5s;
+    font-family: '幼圆';
+    border-style: solid;
+    border-radius: 5px;
+    border-color: lightblue;
+    background-color: #66d9ef;
+}
+.back:hover {
+    color: gray;
+}
+.body_cls {
+    position: relative; /* 设置父元素为相对定位 */
+    background: none; /* 清除原始背景图片 */
+}
+.body_cls::before {
+    content: ''; /* 伪元素需要 content 属性 */
+    position: absolute; /* 伪元素绝对定位 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../IMG/file_back.jpg); /* 设置透明度的背景图片 */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.6; /* 设置背景图片透明度 */
+    z-index: -1; /* 使伪元素在背景下显示 */
+}
+pre, code {
+    white-space: pre-wrap; /* 保留代码格式，但允许换行 */
+    word-wrap: break-word; /* 长单词或代码行过长时进行换行 */
+    overflow-wrap: break-word; /* 兼容性写法 */
+}
+@media (max-width: 950px) {
+    .header_cls {flex-direction: column;}
+    .head_cls {
+        font-size: 30px;
+        width: 100%;
+        position: relative;
+        left: 40%;
+        top: -40px;
+    }
+    .logo_cls {
+        height: 100px;
+        width: 150px;
+        position: relative;
+        left: 10%;
+        top: 30px;
+    }
+    .nav_cls {height: auto;}
+    .list_cls {flex-direction: column;}
+    .main_cls, .toc_nav_cls {width: 100%;}
+    .middle_cls {flex-direction: column;}
+    .nav_li_cls {font-size: 15px;}
+    .h2_cls {font-size: 30px;}
+    .h3_cls {font-size: 15px;}
+    .text_cls {font-size: 15px;}
+    .list_li_cls {font-size: 20px;}
+    .footer_text_cls {font-size: 15px;}
+    pre {font-size: 10px;}
+}
+@media (min-width: 950px) and (max-width: 1600px){
+    .header_cls {flex-direction: column;}
+    .head_cls {
+        font-size: 50px;
+        width: 100%;
+        position: relative;
+        left: 40%;
+        top: -100px;
+    }
+    .logo_cls {
+        height: 200px;
+        width: 300px;
+        position: relative;
+        left: 10%;
+        top: 30px;
+    }
+    .nav_cls {height: auto;}
+    .list_cls {flex-direction: column;}
+    .list_li_cls {font-size: 20px;}
+    .main_cls, .toc_nav_cls {width: 100%;}
+    .middle_cls {flex-direction: column;}
+    .nav_li_cls {font-size: 20px;}
+    .h2_cls {font-size: 35px;}
+    .h3_cls {font-size: 20px;}
+    .text_cls {font-size: 20px;}
+    .footer_text_cls {font-size: 20px;}
+    pre {font-size: 18px;}
+}
+@media (min-width: 1700px) and (max-width: 3000px){
+    .body_cls {
+        background-size: cover;
+    }
+    .head_cls {
+        font-size: 60px;
+        width: 100%;
+        position: relative;
+        left: 20%;
+        top: 20px;
+    }
+    .logo_cls {
+        height: 133px;
+        width: 200px;
+        position: relative;
+        left: 300px;
+        top: 0px;
+    }
+    .nav_cls {height: auto;}
+    .main_cls, .toc_nav_cls {width: 100%;}
+    .nav_li_cls {font-size: 30px;}
+    .h2_cls {font-size: 35px;}
+    .h3_cls {font-size: 30px;}
+    .text_cls {font-size: 30px;}
+    .toc_nav_cls {width: auto;}
+    .list_li_cls {font-size: 25px;}
+    .footer_text_cls {font-size: 30px;}
+    pre {font-size: 25px;}
+}
+@media (min-width: 3300px) and (max-width: 7000px){
+    .body_cls {
+        background-size: cover;
+    }
+    .head_cls {
+        font-size: 200px;
+        width: 100%;
+        position: relative;
+        left: 20%;
+        top: 120px;
+    }
+    .logo_cls {
+        height: 400px;
+        width: 600px;
+        position: relative;
+        left: 300px;
+        top: 0px;
+    }
+    .nav_cls {height: auto;}
+    .main_cls, .toc_nav_cls {width: 100%;}
+    .nav_li_cls {
+        font-size: 60px;
+        height: 80px;
+
+    }
+    .h2_cls {font-size: 60px;}
+    .h3_cls {font-size: 60px;}
+    .text_cls {font-size: 60px;}
+    .toc_nav_cls {width: 600px;}
+    .list_li_cls {font-size: 50px;}
+    .footer_text_cls {font-size: 60px;}
+    .toc_cls {
+        width: 500px;
+        height: 100px;
+    }
+    pre {font-size: 50px;}
+}

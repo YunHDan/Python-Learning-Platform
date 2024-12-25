@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python函数知识</title>
+    <link rel="stylesheet" href="../CSS/function.css">
+</head>
+<body class="body_cls">
+    <header class="header_cls" id="0">
+        <a href="../HTML/index.html"><img src="../IMG/logo.jpg" alt="网站logo" height="200px" width="300px" class="logo_cls"></a>
+        <h1 class="head_cls">
+            Python学习小站
+        </h1>
+    </header>
+    <hr class="head_hr_cls">
+    <nav class="nav_cls">
+        <ul class="list_cls">
+            <a href="../HTML/index.html" class="link_cls"><li class="nav_li_cls">开始</li></a>
+            <a href="../HTML/python_list.html" class="link_cls"><li class="nav_li_cls">Python列表</li></a>
+            <a href="../HTML/python_string.html" class="link_cls"><li class="nav_li_cls">Python字符串</li></a>
+            <a href="../HTML/python_sequence.html" class="link_cls"><li class="nav_li_cls">Python序列</li></a>
+            <a href="../HTML/python_dict.html" class="link_cls"><li class="nav_li_cls">Python字典</li></a>
+            <a href="../HTML/python_set.html" class="link_cls"><li class="nav_li_cls">Python集合</li></a>
+            <a href="../HTML/python_file.html" class="link_cls"><li class="nav_li_cls">Python文件</li></a>
+            <a href="../HTML/python_function.html" class="link_cls"><li class="nav_li_cls">Python函数</li></a>
+            <a href="../HTML/message.html" class="link_cls"><li class="nav_li_cls">联系我们</li></a>
+        </ul>
+    </nav>
+    <hr class="head_hr_cls">
+    <div class="middle_cls">
+        <nav class="toc_nav_cls">
+            <h2 class="h2_cls">
+                目录
+            </h2>
+            <ul class="list2_cls">
+                <li class="toc_cls"><a href="#1" class="list_li_cls">函数的两种传参方式</a></li>
+                <li class="toc_cls"><a href="#2" class="list_li_cls">默认参数</a></li>
+                <li class="toc_cls"><a href="#3" class="list_li_cls">/与*</a></li>
+                <li class="toc_cls"><a href="#4" class="list_li_cls">将参数打包为元组</a></li>
+                <li class="toc_cls"><a href="#5" class="list_li_cls">将返回值解包</a></li>
+                <li class="toc_cls"><a href="#6" class="list_li_cls">将参数打包为字典</a></li>
+                <li class="toc_cls"><a href="#7" class="list_li_cls">传参解包</a></li>
+                <li class="toc_cls"><a href="#8" class="list_li_cls">LEGB规则</a></li>
+                <li class="toc_cls"><a href="#9" class="list_li_cls">global关键字</a></li>
+                <li class="toc_cls"><a href="#10" class="list_li_cls">nonlocal关键字</a></li>
+                <li class="toc_cls"><a href="#11" class="list_li_cls">闭包</a></li>
+                <li class="toc_cls"><a href="#12" class="list_li_cls">函数作为参数传递</a></li>
+                <li class="toc_cls"><a href="#13" class="list_li_cls">装饰器</a></li>
+                <li class="toc_cls"><a href="#14" class="list_li_cls">多重装饰</a></li>
+                <li class="toc_cls"><a href="#15" class="list_li_cls">给装饰器传参</a></li>
+                <li class="toc_cls"><a href="#16" class="list_li_cls">lambda函数</a></li>
+                <li class="toc_cls"><a href="#17" class="list_li_cls">生成器与yield关键字</a></li>
+            </ul>
+        </nav>
+        <main class="main_cls">
+    <h3 class="h2_cls" id="1">一、函数的两种传参方式<span><a href="#0" class="back">回顶</a></span></h3>   
+    <pre><code>
+    <span class="keyword">def</span> <span class="function">myfunc1</span>(<span class="parameter">s</span>, <span class="parameter">vt</span>, <span class="parameter">o</span>):
+        <span class="keyword">return</span> <span class="function">"".join</span>((<span class="parameter">o</span>, <span class="parameter">vt</span>, <span class="parameter">s</span>))
+    <span class="builtin">print</span>(<span class="function">myfunc1</span>(<span class="string">"我"</span>, <span class="string">"爱上"</span>, <span class="string">"Python"</span>))
+    <span class="builtin">print</span>(<span class="function">myfunc1</span>(<span class="parameter">o</span><span class="operator">=</span><span class="string">"我"</span>, <span class="parameter">vt</span><span class="operator">=</span><span class="string">"爱上"</span>, <span class="parameter">s</span><span class="operator">=</span><span class="string">"Python"</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="2">二、默认参数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#    默认参数</span>
+    <span class="keyword">def</span> <span class="function">myfunc2</span>(<span class="parameter">s</span>, <span class="parameter">vt</span>, <span class="parameter">o</span><span class="operator">=</span><span class="string">"Study"</span>):
+        <span class="keyword">return</span> <span class="function">"".join</span>((<span class="parameter">s</span>, <span class="parameter">vt</span>, <span class="parameter">o</span>))
+    <span class="builtin">print</span>(<span class="function">myfunc2</span>(<span class="string">"我"</span>, <span class="string">"爱"</span>))
+    <span class="builtin">print</span>(<span class="function">myfunc2</span>(<span class="string">"我"</span>, <span class="string">"爱"</span>, <span class="string">"Python"</span>))
+
+    <span class="keyword">def</span> <span class="function">myfunc3</span>(<span class="parameter">vt</span>, <span class="parameter">s</span><span class="operator">=</span><span class="string">"苹果"</span>, <span class="parameter">o</span><span class="operator">=</span><span class="string">"我"</span>):
+        <span class="keyword">return</span> <span class="function">"".join</span>((<span class="parameter">o</span>, <span class="parameter">vt</span>, <span class="parameter">s</span>))
+    <span class="builtin">print</span>(<span class="function">myfunc3</span>(<span class="string">"吃了"</span>))
+    <span class="builtin">print</span>(<span class="function">abs</span>(<span class="number">-1.5</span>))
+    <span class="builtin">print</span>(<span class="function">sum</span>(<span class="module">[1, 2, 3]</span>, <span class="parameter">start</span><span class="operator">=</span><span class="number">4</span>))
+    <span class="comment">#!  print(abs(x = -1.5))是不被允许的，会报错</span>
+    <span class="comment">#!  同理，sum(start=4, [1, 2, 3])也是会报错的</span>
+    <span class="comment">#    关键字传参在位置传参后面</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="3">三、/与*<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="keyword">def</span> <span class="function">abc1</span>(<span class="parameter">a</span>, <span class="operator">/</span>, <span class="parameter">b</span>, <span class="parameter">c</span>):
+        <span class="builtin">print</span>(<span class="parameter">a</span>, <span class="parameter">b</span> ,<span class="parameter">c</span>)
+    <span class="function">abc1</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)
+    <span class="function">abc1</span>(<span class="number">1</span>, <span class="parameter">b</span> <span class="operator">=</span> <span class="number">2</span>, <span class="parameter">c</span> <span class="operator">=</span> <span class="number">3</span>)
+    <span class="comment">#    函数形参有/，说明在/之前的参数在传参时必须是位置参数而不能是关键字参数</span>
+
+    <span class="keyword">def</span> <span class="function">abc2</span>(<span class="parameter">a</span>, <span class="operator">*</span>, <span class="parameter">b</span>, <span class="parameter">c</span>):
+        <span class="builtin">print</span>(<span class="parameter">a</span> ,<span class="parameter">b</span> ,<span class="parameter">c</span>)
+    <span class="function">abc2</span>(<span class="number">1</span>, <span class="parameter">b</span> <span class="operator">=</span> <span class="number">2</span>, <span class="parameter">c</span> <span class="operator">=</span> <span class="number">3</span>)
+    <span class="function">abc2</span>(<span class="parameter">a</span> <span class="operator">=</span> <span class="number">4</span>, <span class="parameter">b</span> <span class="operator">=</span> <span class="number">5</span>, <span class="parameter">c</span> <span class="operator">=</span> <span class="number">6</span>)
+    <span class="comment">#    函数形参有*，说明在*之后的参数传参时必须是关键字参数</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="4">四、将参数打包为元组<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="keyword">def</span> <span class="function">myfunc4</span>(<span class="operator">*</span><span class="parameter">args</span>):
+        <span class="builtin">print</span>(<span class="string">"有{}个参数".format(len(args))</span>)
+        <span class="builtin">print</span>(<span class="string">"第2个参数是:{}".format(args[1])</span>)
+        <span class="builtin">print</span>(<span class="parameter">args</span>)
+        <span class="builtin">print</span>(<span class="function">type</span>(<span class="parameter">args</span>))
+    <span class="function">myfunc4</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)
+    <span class="comment">#    在参数前加*，可以将传入的位置参数打包成一个元组</span>
+    
+    <span class="keyword">def</span> <span class="function">myfunc8</span>(<span class="operator">*</span><span class="parameter">args</span>, <span class="parameter">a</span>, <span class="parameter">b</span>):
+    <span class="builtin">print</span>(<span class="parameter">args</span>, <span class="parameter">a</span>, <span class="parameter">b</span>)
+    <span class="function">myfunc8</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ,<span class="parameter">a</span> <span class="operator">=</span> <span class="number">4</span>, <span class="parameter">b</span> <span class="operator">=</span> <span class="number">5</span>)
+    <span class="comment">#    如果出现了打包成元组的操作，那么后面参数传参时必须用关键字参数传参，以区分元组打包传参</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="5">五、将返回值解包<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="keyword">def</span> <span class="function">myfunc6</span>():
+        <span class="keyword">return</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>
+    <span class="builtin">print</span>(<span class="function">myfunc6</span>)
+    <span class="identifier">x</span>, <span class="identifier">y</span>, <span class="identifier">z</span> <span class="operator">=</span> <span class="function">myfunc6</span>()
+    <span class="builtin">print</span>(<span class="identifier">x</span>, <span class="identifier">y</span>, <span class="identifier">z</span>)
+    <span class="comment">#    多参数返回，解包操作</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="6">六、将参数打包为字典<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="keyword">def</span> <span class="function">myfunc9</span>(<span class="operator">**</span><span class="parameter">kwargs</span>):
+        <span class="builtin">print</span>(<span class="parameter">kwargs</span>)
+    <span class="function">myfunc9</span>(<span class="parameter">a</span> <span class="operator">=</span> <span class="number">1</span>, <span class="parameter">b</span> <span class="operator">=</span> <span class="number">2</span>, <span class="parameter">c</span> <span class="operator">=</span> <span class="number">3</span>)
+    <span class="comment">#    参数前出现**，那么就是字典打包传参，传参时要按照：键=值的方式传参，那么就会在函数内新建一个字典，键值对就是我们传参时候设置的形式。</span>
+
+    <span class="keyword">def</span> <span class="function">myfunc10</span>(<span class="parameter">a</span>, <span class="operator">*</span><span class="parameter">b</span>, <span class="operator">**</span><span class="parameter">c</span>，<span class="parameter">d</span>):
+        <span class="builtin">print</span>(<span class="parameter">a</span>, <span class="parameter">b</span>, <span class="parameter">c</span>, <span class="parameter">d</span>)
+    <span class="function">myfunc10</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="parameter">x</span> <span class="operator">=</span> <span class="number">5</span>, <span class="parameter">y</span> <span class="operator">=</span> <span class="number">6</span>, <span class="parameter">d</span> <span class="operator">=</span> <span class="number">8</span>)
+    <span class="comment">#    综合运用，同理，字典打包传参后面的参数同样必须用关键字传参</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="7">七、传参解包<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="keyword">def</span> <span class="function">myfunc11</span>(<span class="parameter">a</span>, <span class="parameter">b</span>, <span class="parameter">c</span>, <span class="parameter">d</span>):
+        <span class="builtin">print</span>(<span class="parameter">a</span>, <span class="parameter">b</span>, <span class="parameter">c</span>, <span class="parameter">d</span>)
+    <span class="identifier">args</span> <span class="operator">=</span> <span class="module">(1, 2, 3, 4)</span>
+    <span class="function">myfunc11</span>(<span class="operator">*</span><span class="identifier">args</span>)
+    <span class="comment">#    传参时用*代表解包元组</span>
+
+    <span class="identifier">kwargs</span> <span class="operator">=</span> <span class="module">{'a':1, 'b':2, 'c':3, 'd':4}</span>
+    <span class="function">myfunc11</span>(<span class="operator">**</span><span class="identifier">kwargs</span>)
+    <span class="comment">#    使用**对传参时的字典进行解包，此时值会被保留下来，键会被舍弃</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="8">八、LEGB规则<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#*  LEGB规则，python变量引用顺序：从当前作用域开始寻找变量，如果没找到就往上一层作用域寻找，</span>
+    <span class="comment">#*  没找到就再上一层。</span>
+    <span class="comment">#TODO   具体步骤：当前作用域局部变量->外层作用域变量->再外层作用域变量->…->当前模块全局变量->pyhton内置变量</span>
+
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="number">880</span> <span class="comment">#*  全局变量</span>
+    <span class="keyword">def</span> <span class="function">myfunc12</span>():
+        <span class="identifier">x</span> <span class="operator">=</span> <span class="number">770</span> <span class="comment">#*局部变量</span>
+        <span class="builtin">print</span>(<span class="identifier">x</span>, <span class="function">id</span>(<span class="identifier">x</span>))
+    <span class="function">myfunc12</span>()
+    <span class="builtin">print</span>(<span class="identifier">x</span>, <span class="function">id</span>(<span class="identifier">x</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="9">九、global关键字<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#TODO   使用global关键字，可以调用全局变量，甚至可以在函数内部创建全局变量</span>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="number">250</span>
+    <span class="keyword">def</span> <span class="function">myfunc13</span>():
+    <span class="keyword">global</span> <span class="identifier">x</span>, <span class="identifier">y</span> 
+    <span class="comment">#TODO   调用全局变量x，创建全局变量y</span>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="number">260</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="number">250</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>, <span class="identifier">y</span>, <span class="function">id</span>(<span class="identifier">x</span>), <span class="function">id</span>(<span class="identifier">y</span>))
+    <span class="function">myfunc13</span>()
+    <span class="builtin">print</span>(<span class="identifier">x</span>, <span class="identifier">y</span>, <span class="function">id</span>(<span class="identifier">x</span>), <span class="function">id</span>(<span class="identifier">y</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="10">十、nonlocal关键字<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#TODO   使用nonlocal关键字，可以在嵌套的函数内部修改外层函数的变量，</span>
+    <span class="comment">#!  但是前提是外层函数定义了某个变量，不然使用nonlocal会因为找不到外层函数的变量而报错</span>
+    <span class="keyword">def</span> <span class="function">myfunc14</span>():
+        <span class="identifier">x</span> <span class="operator">=</span> <span class="number">250</span> 
+        <span class="comment">#*  myfunc14内的变量x</span>
+        <span class="keyword">def</span> <span class="function">myfunc15</span>():
+            <span class="keyword">nonlocal</span> <span class="identifier">x</span>  
+            <span class="comment">#TODO   调用myfunc14内的变量x，如果x未定义，则报错</span>
+            <span class="comment">#!  倘若没有这句nonlocal，那么会在内层函数内新建一个x变量，但是外层函数的x依然没有得到改变</span>
+            <span class="comment">#!  也就是说想要修改外层函数的变量，要用这些关键字，不然根据LEGB规则，即使同名，先使用的依然是内层函数的变量x</span>
+            <span class="identifier">x</span> <span class="operator">=</span> <span class="number">260</span>
+            <span class="builtin">print</span>(<span class="identifier">x</span>, <span class="function">id</span>(<span class="identifier">x</span>))
+        <span class="function">myfunc15</span>()
+        <span class="builtin">print</span>(<span class="identifier">x</span>, <span class="function">id</span>(<span class="identifier">x</span>))
+    <span class="function">myfunc14</span>()
+    <span class="comment">#!  当然，不使用nonlocal关键字，也可以在内层函数中调用外层函数的变量，但是不能修改，参考下面的power函数，原理是LEGB规则</span>
+    
+    <span class="comment">#*  内层函数具有记忆外层函数作用域的特性，因此可以用来记忆外层函数的变量</span>
+    <span class="comment">#*  通过nonlocal实现记忆外层函数变量的功能</span>
+    <span class="keyword">def</span> <span class="function">outer</span>():
+        <span class="identifier">x</span> <span class="operator">=</span> <span class="number">0</span>
+        <span class="identifier">y</span> <span class="operator">=</span> <span class="number">0</span>
+        <span class="keyword">def</span> <span class="function">inner</span>(<span class="parameter">x1</span>, <span class="parameter">y1</span>):
+            <span class="keyword">nonlocal</span> <span class="identifier">x</span>, <span class="identifier">y</span>
+            <span class="identifier">x</span> <span class="operator">+=</span> <span class="parameter">x1</span>
+            <span class="identifier">y</span> <span class="operator">+=</span> <span class="parameter">y1</span>
+    <span class="builtin">print</span>(<span class="string">"现在，x = {}， y = {}".format(x, y)</span>)
+    <span class="keyword">return</span> <span class="function">inner</span>
+    <span class="identifier">move</span> <span class="operator">=</span> <span class="function">outer</span>()
+    <span class="function">move</span>(<span class="number">1</span>, <span class="number">2</span>)
+    <span class="function">move</span>(<span class="operator">-</span><span class="number">2</span>, <span class="number">2</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="11">十一、闭包<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#*  什么是闭包？</span>
+    <span class="comment">#*  如果在一个内部函数里，对在外部作用域（但不是在全局作用域）的变量进行引用，那么内部函数就被认为是闭包</span>
+    <span class="comment">#*  闭包就像是一个流水线，而闭包的外层函数是一个工厂，通过给外层函数传递参数，来确定工厂的流水线</span>
+    <span class="comment">#TODO   考虑下面的例子，power是次方函数，接收参数exp，exp=2就是求2次方，exp=3就是求三次方，</span>
+    <span class="comment">#TODO   外层函数作为工厂，决定加工性质，而内层函数闭包作为流水线，将产品生产出来</span>
+    <span class="comment">#*  闭包，使得我们能够使用内层函数</span>
+    <span class="keyword">def</span> <span class="function">power</span>(<span class="parameter">exp</span>):
+        <span class="keyword">def</span> <span class="function">exp_of</span>(<span class="parameter">base</span>):
+            <span class="keyword">return</span> <span class="parameter">base</span> <span class="operator">**</span> <span class="parameter">exp</span>
+        <span class="keyword">return</span> <span class="function">exp_of</span>
+    <span class="identifier">square</span> <span class="operator">=</span> <span class="function">power</span>(<span class="number">2</span>)
+    <span class="identifier">cube</span> <span class="operator">=</span> <span class="function">power</span>(<span class="number">3</span>)
+    <span class="builtin">print</span>(<span class="function">square</span>(<span class="number">2</span>), <span class="function">square</span>(<span class="number">5</span>), <span class="function">cube</span>(<span class="number">2</span>), <span class="function">cube</span>(<span class="number">5</span>))
+    <span class="comment">#*  通过将工厂power赋一参数，得到流水线————内层函数，然后赋值给变量，</span>
+    <span class="comment">#*  这时，变量就是内层函数，也就是流水线，然后再进而给内层函数赋值，得到产品————结果</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="12">十二、函数作为参数传递<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#*  可以将函数作为参数传递给函数</span>
+    <span class="keyword">def</span> <span class="function">myfunc</span>():
+        <span class="builtin">print</span>(<span class="string">"正在调用myfunc..."</span>)
+    <span class="keyword">def</span> <span class="function">report</span>(<span class="parameter">func</span>):
+        <span class="builtin">print</span>(<span class="string">"我要开始调用函数了..."</span>)
+        <span class="parameter">func</span>()
+        <span class="builtin">print</span>(<span class="string">"调用函数完毕"</span>)
+    <span class="function">report</span>(<span class="parameter">myfunc</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="13">十三、装饰器<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#?  什么是装饰器？有一个目标函数，这个函数是我们想要调用的，</span>
+    <span class="comment">#?  装饰器就是创建一个闭包，然后对目标函数进行加工修饰，</span>
+    <span class="comment">#?  达到不改动目标函数的同时，增加函数的功能</span>
+    <span class="comment">#TODO   所以装饰器是通过闭包+函数作为参数来实现的</span>
+    <span class="keyword">import</span> <span class="module">time</span>
+    <span class="keyword">def</span> <span class="function">time_master</span>(<span class="parameter">func</span>):
+        <span class="comment">#*  闭包第一层函数参数用来接收外界函数</span>
+        <span class="keyword">def</span> <span class="function">call_func</span>():
+            <span class="builtin">print</span>(<span class="string">"开始运行程序..."</span>)
+            <span class="identifier">start</span> <span class="operator">=</span> <span class="module">time.time</span>()
+            <span class="parameter">func</span>()
+            <span class="identifier">stop</span> <span class="operator">=</span> <span class="module">time.time</span>()
+            <span class="builtin">print</span>(<span class="string">"结束程序运行..."</span>)
+            <span class="builtin">print</span>(<span class="string">"一共耗费了{:.12f}秒".format(stop - start)</span>)
+        <span class="keyword">return</span> <span class="function">call_func</span>    <span class="comment">#*  返回内层函数</span>
+
+    <span class="operator">@time_master</span>    <span class="comment">#*通过@，我们将@下面的目标函数进行@内容的装饰，增加函数功能</span>
+    <span class="comment">#!  @time_master本质是:myfunc15 = time_master(myfunc15)</span>
+    <span class="comment">#!  所以，装饰器的本质就是将以定义好的函数myfunc15传入闭包内加工装饰成新的函数，</span>
+    <span class="comment">#!  然后返回给myfunc15自己，那么myfunc15本身就相当于给自己加了装饰。</span>
+    <span class="keyword">def</span> <span class="function">myfunc15</span>():
+        <span class="module">time.sleep</span>(<span class="number">2</span>)
+        <span class="builtin">print</span>(<span class="string">"I love Python"</span>)
+    <span class="function">myfunc15</span>()
+    </code></pre>
+
+    <h3 class="h2_cls" id="14">十四、多重装饰<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#*  多重装饰，装饰顺序为从下至上</span>
+    <span class="keyword">def</span> <span class="function">add</span>(<span class="parameter">func</span>):
+        <span class="keyword">def</span> <span class="function">inner</span>():
+            <span class="identifier">x</span> <span class="operator">=</span> <span class="parameter">func</span>()
+            <span class="keyword">return</span> <span class="identifier">x</span> <span class="operator">+</span> <span class="number">1</span>
+        <span class="keyword">return</span> <span class="function">inner</span>
+    <span class="keyword">def</span> <span class="function">cube</span>(<span class="parameter">func</span>):
+        <span class="keyword">def</span> <span class="function">inner</span>():
+            <span class="identifier">x</span> <span class="operator">=</span> <span class="parameter">func</span>()
+            <span class="keyword">return</span> <span class="identifier">x</span> <span class="operator">*</span> <span class="identifier">x</span> <span class="operator">*</span> <span class="identifier">x</span>
+    <span class="keyword">return</span> <span class="function">inner</span>
+    <span class="keyword">def</span> <span class="function">square</span>(<span class="parameter">func</span>):
+        <span class="keyword">def</span> <span class="function">inner</span>():
+            <span class="identifier">x</span> <span class="operator">=</span> <span class="parameter">func</span>()
+            <span class="keyword">return</span> <span class="identifier">x</span> <span class="operator">*</span> <span class="identifier">x</span>
+        <span class="keyword">return</span> <span class="function">inner</span>
+    <span class="operator">@add</span>
+    <span class="operator">@cube</span>
+    <span class="operator">@square</span>
+    <span class="keyword">def</span> <span class="function">test</span>():
+        <span class="keyword">return</span> <span class="number">2</span>
+    <span class="builtin">print</span>(<span class="function">test</span>())
+    </code></pre>
+
+    <h3 class="h2_cls" id="15">十五、给装饰器传参<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="comment">#*  如果想给装饰器传入参数，那么我们可以给装饰器外层，即闭包外层再嵌套一个函数</span>
+    <span class="comment">#*  这个函数专门接收参数</span>
+    <span class="keyword">def</span> <span class="function">logger</span>(<span class="parameter">msg</span>):
+        <span class="keyword">def</span> <span class="function">time_counter</span>(<span class="parameter">func</span>):
+            <span class="keyword">def</span> <span class="function">call_func</span>():
+                <span class="identifier">start</span> <span class="operator">=</span> <span class="module">time.time</span>()
+                <span class="parameter">func</span>()
+                <span class="identifier">stop</span> <span class="operator">=</span> <span class="module">time.time</span>()
+                <span class="builtin">print</span>(<span class="string">"小{0}睡了{second:.2f}秒".format(msg, second = stop - start)</span>)
+            <span class="keyword">return</span> <span class="function">call_func</span>
+        <span class="keyword">return</span> <span class="function">time_counter</span>
+
+    <span class="operator">@logger</span>(<span class="string">"A"</span>)
+    <span class="keyword">def</span> <span class="function">funA</span>():
+        <span class="module">time.sleep</span>(<span class="number">1</span>)
+        <span class="builtin">print</span>(<span class="string">"正在调用funA..."</span>)
+
+    <span class="operator">@logger</span>(<span class="parameter">msg</span> <span class="operator">=</span> <span class="string">"B"</span>)
+    <span class="keyword">def</span> <span class="function">funB</span>():
+        <span class="module">time.sleep</span>(<span class="number">1</span>)
+        <span class="builtin">print</span>(<span class="string">"正在调用funB..."</span>)
+    <span class="function">funA</span>()
+    <span class="function">funB</span>()
+    </code></pre>
+
+    <h3 class="h2_cls" id="16">十六、lambda函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="identifier">squareX</span> <span class="operator">=</span> <span class="keyword">lambda</span> <span class="parameter">x</span> <span class="operator">:</span> <span class="parameter">x</span> <span class="operator">*</span> <span class="parameter">x</span>
+    <span class="builtin">print</span>(<span class="function">squareX</span>(<span class="number">3</span>))
+    <span class="builtin">print</span>(<span class="function">type</span>(<span class="parameter">squareX</span>))
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="module">[lambda</span> <span class="parameter">y</span> <span class="operator">:</span> <span class="parameter">y</span> <span class="operator">*</span> <span class="parameter">y</span>, <span class="number">2</span>, <span class="number">3</span>]
+    <span class="builtin">print</span>(<span class="parameter">y</span>[<span class="number">0</span>](<span class="parameter">y</span>[<span class="number">1</span>]), <span class="parameter">y</span>[<span class="number">0</span>](<span class="parameter">y</span>[<span class="number">2</span>]))
+    <span class="identifier">mapped</span> <span class="operator">=</span> <span class="function">map</span>(<span class="parameter">lambda</span> <span class="parameter">x</span> <span class="operator">:</span> <span class="function">ord</span>(<span class="parameter">x</span>) <span class="operator">+</span> <span class="number">10</span>, <span class="string">"Python"</span>)
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="parameter">mapped</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="17">十七、生成器与yield关键字<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code> 
+    <span class="keyword">def</span> <span class="function">counter</span>():
+        <span class="identifier">i</span> <span class="operator">=</span> <span class="number">0</span>
+        <span class="keyword">while</span> <span class="identifier">i</span> <span class="operator"><=</span> <span class="number">5</span>:
+            <span class="keyword">yield</span> <span class="identifier">i</span>
+            <span class="comment">#*  yield将函数变成生成器函数</span>
+            <span class="comment">#*  使用yield，将会暂停函数，但是函数的进程将会被记住，然后返回一个值，一次调用返回一次值</span>
+            <span class="identifier">i</span> <span class="operator">+=</span> <span class="number">1</span>
+    <span class="builtin">print</span>(<span class="string">"生成器："</span>)
+    <span class="builtin">print</span>(<span class="function">counter</span>())
+    <span class="comment">#*  当调用生成器函数，会返回生成器对象</span>
+    <span class="keyword">for</span> <span class="identifier">i</span> <span class="keyword">in</span> <span class="function">counter</span>():
+        <span class="comment">#*  从此我们知道，生成器实际上是一个迭代器，通过for的i每次调用生成器，</span>
+        <span class="comment">#*  相对于启动-关闭-启动-关闭...，由于for循环会自动调用next，因此在print i的时候</span>
+        <span class="comment">#*  会打印生成器的元素</span>
+        <span class="builtin">print</span>(<span class="parameter">i</span>)
+    <span class="identifier">c</span> <span class="operator">=</span> <span class="function">counter</span>()
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">c</span>))
+    <span class="comment">#TODO   通过next可以将生成器的元素打印出来</span>
+    <span class="builtin">print</span>(<span class="string">"生成器不支持c[2]"</span>)
+    <span class="keyword">def</span> <span class="function">fib</span>():
+        <span class="identifier">back1</span>, <span class="identifier">back2</span> <span class="operator">=</span> <span class="number">0</span>, <span class="number">1</span>
+        <span class="keyword">while</span> <span class="number">1</span>:
+            <span class="keyword">yield</span> <span class="identifier">back1</span>
+            <span class="identifier">back1</span>, <span class="identifier">back2</span> <span class="operator">=</span> <span class="identifier">back2</span>, (<span class="identifier">back1</span> <span class="operator">+</span> <span class="identifier">back2</span>)
+    <span class="identifier">f</span> <span class="operator">=</span> <span class="function">fib</span>()
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">f</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">f</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">f</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">f</span>))
+
+    <span class="keyword">def</span> <span class="function">add</span>(<span class="parameter">x</span>, <span class="parameter">y</span>):
+        <span class="string">"""两数做和
+            x (int): 其中一个加数
+            :param y:另外一个加数
+            :param return:返回和
+        """</span>
+        <span class="identifier">result</span> <span class="operator">=</span> <span class="parameter">x</span> <span class="operator">+</span> <span class="parameter">y</span>
+        <span class="builtin">print</span>(<span class="string">f"两数相加的结果是：{result}"</span>)
+        <span class="keyword">return</span> <span class="identifier">result</span>
+    <span class="function">add</span>(<span class="number">1</span>, <span class="number">9</span>)
+                </code>
+            </pre>
+        </main>
+    </div>
+    <footer>
+        <div class="footer_cls">
+            <p class="footer_text_cls">
+                版权信息：<br>  <span><a href="#0" class="back">回顶</a></span>
+                学校：江西师范大学；学院：计算机信息工程学院；班级：计算机科学与技术2班；姓名：邓润华；
+                学号：202226202039；email：2312666252@qq.com；<br>
+                本网站为邓润华的独立创作成果，未经许可，不可转载。
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

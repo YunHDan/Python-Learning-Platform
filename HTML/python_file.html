@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python文件知识</title>
+    <link rel="stylesheet" href="../CSS/file.css">
+</head>
+<body class="body_cls">
+    <header class="header_cls" id="0">
+        <a href="../HTML/index.html"><img src="../IMG/logo.jpg" alt="网站logo" height="200px" width="300px" class="logo_cls"></a>
+        <h1 class="head_cls">
+            Python学习小站
+        </h1>
+    </header>
+    <hr class="head_hr_cls">
+    <nav class="nav_cls">
+        <ul class="list_cls">
+            <a href="../HTML/index.html" class="link_cls"><li class="nav_li_cls">开始</li></a>
+            <a href="../HTML/python_list.html" class="link_cls"><li class="nav_li_cls">Python列表</li></a>
+            <a href="../HTML/python_string.html" class="link_cls"><li class="nav_li_cls">Python字符串</li></a>
+            <a href="../HTML/python_sequence.html" class="link_cls"><li class="nav_li_cls">Python序列</li></a>
+            <a href="../HTML/python_dict.html" class="link_cls"><li class="nav_li_cls">Python字典</li></a>
+            <a href="../HTML/python_set.html" class="link_cls"><li class="nav_li_cls">Python集合</li></a>
+            <a href="../HTML/python_file.html" class="link_cls"><li class="nav_li_cls">Python文件</li></a>
+            <a href="../HTML/python_function.html" class="link_cls"><li class="nav_li_cls">Python函数</li></a>
+            <a href="../HTML/message.html" class="link_cls"><li class="nav_li_cls">联系我们</li></a>
+        </ul>
+    </nav>
+    <hr class="head_hr_cls">
+    <div class="middle_cls">
+        <nav class="toc_nav_cls">
+            <h2 class="h2_cls">
+                目录
+            </h2>
+            <ul class="list2_cls">
+                <li class="toc_cls"><a href="#1" class="list_li_cls">open函数</a></li>
+                <li class="toc_cls"><a href="#2" class="list_li_cls">read函数</a></li>
+                <li class="toc_cls"><a href="#3" class="list_li_cls">close函数?</a></li>
+                <li class="toc_cls"><a href="#4" class="list_li_cls">readline与readlines</a></li>
+                <li class="toc_cls"><a href="#5" class="list_li_cls">with open</a></li>
+                <li class="toc_cls"><a href="#6" class="list_li_cls">写入操作</a></li>
+                <li class="toc_cls"><a href="#7" class="list_li_cls">追加操作</a></li>
+            </ul>
+        </nav>
+        <main class="main_cls">
+    <h3 class="h2_cls" id="1">一、open函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">f</span> <span class="operator">=</span> <span class="function">open</span>(<span class="string">"D:/好代码.txt"</span>, <span class="string">"r"</span>, <span class="parameter">encoding</span><span class="operator">=</span><span class="string">"UTF-8"</span>)
+    <span class="builtin">print</span>(<span class="function">type</span>(<span class="identifier">f</span>))
+    <span class="comment">#*  open函数用来打开文件，四个参数，但是我们暂时先用三个，第一个参数是字符串，是文件的地址，第二个参数是模式，</span>
+    <span class="comment">#*  有"r","w","a"三种，r是只读，w是写入，a是追加</span>
+    <span class="comment">#*  open函数返回文件对象，可以通过type查看到</span>
+    <span class="comment">#!  如果没有文件，那么它会创建一个新文件</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="2">二、read函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   read方法，作用于文件对象，可以读取指定字节的文件内容，不指定参数，则读取全部文件内容</span>
+    <span class="comment">#!  如果多次调动read，那么下次read就会从上次read的最后位置开始读取</span>
+    <span class="comment">#!  或者，从更加广泛的角度来说，只要使用了r模式打开文件进行读取，那么后面无论使用什么方法和函数，</span>
+    <span class="comment">#!  都会续接上一次读取文件方法的最后读取位置，当然这一切是在同一个文件对象前提来说，如果文件对象不一样，</span>
+    <span class="comment">#!  那么两个文件对象互不相关是理所应当的</span>
+    <span class="builtin">print</span>(<span class="string">f"读取十个字节：{f.read(10)}"</span>)
+    <span class="builtin">print</span>(<span class="string">f"读取剩下的内容：{f.read()}"</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="3">三、close函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   close()函数可以关闭文件</span>
+    <span class="identifier">f</span>.<span class="function">close</span>()
+    </code></pre>
+
+    <h3 class="h2_cls" id="4">四、readline与readlines<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   readlines()方法会读取文件对象的所有行，并且封装到一个列表中</span>
+    <span class="comment">#TODO   readline()读取一行</span>
+    <span class="comment">#!  注意，所有读行操作，即readlines和readline，甚至是for循环取出文件对象的每一行（后面会讲）</span>
+    <span class="comment">#!  都会将行末的换行符\n读取到，因此要进行strip操作（后面会演示）</span>
+    <span class="identifier">f</span> <span class="operator">=</span> <span class="function">open</span>(<span class="string">"D:/好代码.txt"</span>, <span class="string">"r"</span>, <span class="parameter">encoding</span><span class="operator">=</span><span class="string">"UTF-8"</span>)
+    <span class="identifier">line</span> <span class="operator">=</span> <span class="identifier">f</span>.<span class="function">readline</span>()
+    <span class="identifier">lines</span> <span class="operator">=</span> <span class="identifier">f</span>.<span class="function">readlines</span>()
+    <span class="builtin">print</span>(<span class="identifier">line</span>)
+    <span class="builtin">print</span>(<span class="string">f"lines对象的类型：{type(lines)}"</span>)
+    <span class="builtin">print</span>(<span class="string">f"lines对象的内容是：{lines}"</span>)
+    <span class="identifier">f</span>.<span class="function">close</span>()
+
+    <span class="identifier">f</span> <span class="operator">=</span> <span class="function">open</span>(<span class="string">"D:/好代码.txt"</span>, <span class="string">"r"</span>, <span class="parameter">encoding</span><span class="operator">=</span><span class="string">"UTF-8"</span>)
+    <span class="keyword">for</span> <span class="identifier">line</span> <span class="operator">in</span> <span class="identifier">f</span>:
+        <span class="builtin">print</span>(<span class="identifier">line</span>)
+    <span class="identifier">f</span>.<span class="function">close</span>()
+    </code></pre>
+
+    <h3 class="h2_cls" id="5">五、with open<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   with open可以自动帮助我们关闭文件</span>
+    <span class="keyword">with</span> <span class="function">open</span>(<span class="string">"D:/好代码.txt"</span>, <span class="string">"r"</span>, <span class="parameter">encoding</span><span class="operator">=</span><span class="string">"UTF-8"</span>) <span class="keyword">as</span> <span class="identifier">f</span>:
+        <span class="keyword">for</span> <span class="identifier">line</span> <span class="operator">in</span> <span class="identifier">f</span>:
+            <span class="builtin">print</span>(<span class="identifier">line</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="6">六、写入操作<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>            
+    <span class="comment">#TODO   "w"的具体作用是，清除文件的所有内容之后，再重新写入，相对于冲洗文件</span>
+    <span class="identifier">f</span> <span class="operator">=</span> <span class="function">open</span>(<span class="string">"D:/好代码.txt"</span>, <span class="string">"w"</span>, <span class="parameter">encoding</span><span class="operator">=</span><span class="string">"UTF-8"</span>)
+    <span class="comment">#TODO   通过write，可以将具体内容暂时写入缓冲区</span>
+    <span class="identifier">f</span>.<span class="function">write</span>(<span class="string">"hello world!"</span>)
+    <span class="comment">#TODO   flush可以将缓冲区所放的内容真正写入文件</span>
+    <span class="identifier">f</span>.<span class="function">flush</span>()
+    <span class="comment">#*  但是事实上，close函数已经内置了flush()方法</span>
+    <span class="identifier">f</span>.<span class="function">close</span>()
+    <span class="comment">#!  这里需要注意的是只要用w打开了一个文件对象，那么在关闭这个文件对象前</span>
+    <span class="comment">#!  多次使用write是可以累加所写内容的，最后flush或者close才将全部的内容写入文件</span>
+    <span class="comment">#!  此外，只要用w打开了一个文件，这个文件的所有内容就会被清空</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="7">七、追加操作<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   a的作用是追加内容，write的参数就是所追加的内容</span>
+    <span class="comment">#!  但是通常write是追加内容，没有换行，若要换行，可以用\n</span>
+    <span class="identifier">f</span> <span class="operator">=</span> <span class="function">open</span>(<span class="string">"D:/好代码.txt"</span>, <span class="string">"a"</span>, <span class="parameter">encoding</span><span class="operator">=</span><span class="string">"UTF-8"</span>)
+    <span class="identifier">f</span>.<span class="function">write</span>(<span class="string">"hello world!"</span>)
+    <span class="identifier">f</span>.<span class="function">close</span>()
+                </code>
+            </pre>
+        </main>
+    </div>
+    <footer>
+        <div class="footer_cls">
+            <p class="footer_text_cls">
+                版权信息：<br>  <span><a href="#0" class="back">回顶</a></span>
+                学校：江西师范大学；学院：计算机信息工程学院；班级：计算机科学与技术2班；姓名：邓润华；
+                学号：202226202039；email：2312666252@qq.com；<br>
+                本网站为邓润华的独立创作成果，未经许可，不可转载。
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

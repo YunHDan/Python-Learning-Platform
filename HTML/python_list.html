@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python列表知识</title>
+    <link rel="stylesheet" href="../CSS/list.css">
+</head>
+<body class="body_cls">
+    <header class="header_cls" id="0">
+        <a href="../HTML/index.html"><img src="../IMG/logo.jpg" alt="网站logo" height="200px" width="300px" class="logo_cls"></a>
+        <h1 class="head_cls">
+            Python学习小站
+        </h1>
+    </header>
+    <hr class="head_hr_cls">
+    <nav class="nav_cls">
+        <ul class="list_cls">
+            <a href="../HTML/index.html" class="link_cls"><li class="nav_li_cls">开始</li></a>
+            <a href="../HTML/python_list.html" class="link_cls"><li class="nav_li_cls">Python列表</li></a>
+            <a href="../HTML/python_string.html" class="link_cls"><li class="nav_li_cls">Python字符串</li></a>
+            <a href="../HTML/python_sequence.html" class="link_cls"><li class="nav_li_cls">Python序列</li></a>
+            <a href="../HTML/python_dict.html" class="link_cls"><li class="nav_li_cls">Python字典</li></a>
+            <a href="../HTML/python_set.html" class="link_cls"><li class="nav_li_cls">Python集合</li></a>
+            <a href="../HTML/python_file.html" class="link_cls"><li class="nav_li_cls">Python文件</li></a>
+            <a href="../HTML/python_function.html" class="link_cls"><li class="nav_li_cls">Python函数</li></a>
+            <a href="../HTML/message.html" class="link_cls"><li class="nav_li_cls">联系我们</li></a>
+        </ul>
+    </nav>
+    <hr class="head_hr_cls">
+    <div class="middle_cls">
+        <nav class="toc_nav_cls">
+            <h2 class="h2_cls">
+                目录
+            </h2>
+            <ul class="list2_cls">
+                <li class="toc_cls"><a href="#1" class="list_li_cls">下标法访问列表元素</a></li>
+                <li class="toc_cls"><a href="#2" class="list_li_cls">len函数获得列表长度</a></li>
+                <li class="toc_cls"><a href="#3" class="list_li_cls">切片操作</a></li>
+                <li class="toc_cls"><a href="#4" class="list_li_cls">append函数</a></li>
+                <li class="toc_cls"><a href="#5" class="list_li_cls">extend函数</a></li>
+                <li class="toc_cls"><a href="#6" class="list_li_cls">insert函数</a></li>
+                <li class="toc_cls"><a href="#7" class="list_li_cls">remove函数</a></li>
+                <li class="toc_cls"><a href="#8" class="list_li_cls">pop与clear函数</a></li>
+                <li class="toc_cls"><a href="#9" class="list_li_cls">sort与reverse函数</a></li>
+                <li class="toc_cls"><a href="#10" class="list_li_cls">count、index函数</a></li>
+                <li class="toc_cls"><a href="#11" class="list_li_cls">列表的加法和乘法</a></li>
+                <li class="toc_cls"><a href="#12" class="list_li_cls">二维列表操作</a></li>
+                <li class="toc_cls"><a href="#13" class="list_li_cls">is关键字</a></li>
+                <li class="toc_cls"><a href="#14" class="list_li_cls">特殊操作</a></li>
+                <li class="toc_cls"><a href="#15" class="list_li_cls">列表拷贝操作</a></li>
+            </ul>
+        </nav>
+        <main class="main_cls">
+            <h3 class="h2_cls" id="1">一、下标法访问列表元素<span><a href="#0" class="back">回顶</a></span></h3>    
+
+            <pre><code>
+    <span class="identifier">rhyme</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5, "你好"]</span>
+    <span class="builtin">print</span>(<span class="identifier">rhyme</span>[<span class="number">0</span>], <span class="identifier">rhyme</span>[<span class="number">1</span>], <span class="identifier">rhyme</span>[<span class="number">2</span>])
+            </code></pre>
+
+            <p class="text_cls">极其简单。</p>
+            
+            <h3 class="h2_cls" id="2">二、len函数获得列表长度<span><a href="#0" class="back">回顶</a></span></h3>   
+
+            <pre><code>
+    <span class="identifier">length</span> <span class="operator">=</span> <span class="function">len</span>(<span class="identifier">rhyme</span>)
+    <span class="builtin">print</span>(<span class="identifier">length</span>)
+            </code></pre>
+        
+            <h3 class="h2_cls" id="3">三、切片操作<span><a href="#0" class="back">回顶</a></span></h3>  
+
+        <pre><code>
+    <span class="builtin">print</span>(<span class="identifier">rhyme</span>[<span class="identifier">length</span> <span class="operator">-</span> <span class="number">1</span>], <span class="identifier">rhyme</span>[<span class="operator">-</span><span class="number">1</span>], <span class="identifier">rhyme</span>[<span class="number">0</span>:<span class="number">3</span>], <span class="identifier">rhyme</span>[<span class="number">3</span>:<span class="number">6</span>], <span class="identifier">rhyme</span>[:<span class="number">3</span>], <span class="identifier">rhyme</span>[<span class="number">3</span>:], <span class="identifier">rhyme</span>[:], <span class="identifier">rhyme</span>[<span class="number">0</span>:<span class="number">6</span>:<span class="number">2</span>], <span class="identifier">rhyme</span>[<span class="operator">::</span><span class="number">2</span>], <span class="identifier">rhyme</span>[<span class="operator">::-</span><span class="number">2</span>], <span class="identifier">rhyme</span>[<span class="operator">::-</span><span class="number">1</span>])
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="module">[1,2,3,4,5]</span>
+    <span class="identifier">s</span>[<span class="function">len</span>(<span class="identifier">s</span>):] <span class="operator">=</span> <span class="module">[6]</span>
+    <span class="builtin">print</span>(<span class="identifier">s</span>)
+    <span class="identifier">s</span>[<span class="function">len</span>(<span class="identifier">s</span>):] <span class="operator">=</span> <span class="module">[7,8,9]</span>
+    <span class="builtin">print</span>(<span class="identifier">s</span>)
+    <span class="identifier">heros1</span> <span class="operator">=</span> <span class="module">["蜘蛛侠","绿巨人","黑寡妇","鹰眼","灭霸","雷神"]</span>
+    <span class="identifier">heros1</span>[<span class="number">4</span>] <span class="operator">=</span> <span class="string">"钢铁侠"</span>
+    <span class="builtin">print</span>(<span class="identifier">heros1</span>)
+    <span class="identifier">heros1</span>[<span class="number">3</span>:] <span class="operator">=</span> <span class="module">["武松","林冲","李逵"]</span>
+    <span class="builtin">print</span>(<span class="identifier">heros1</span>)
+        </code></pre>    
+    
+    <p class="text_cls">
+        切片方括号里面的范围一般是左闭右开，冒号左边省略，默认为0，冒号右边省略，默认为len，第二个冒号右边是显示的步长。<br>
+        切片法,s[len(s):] == s[5:]表示在末尾添加元素。<br>
+        可以用赋值运算符进行元素替换,它首先会把=左边指定的元素删除，然后将=右边的可迭代对象的片段插入左边被删除的位置。
+    </p>
+
+    <h3 class="h2_cls" id="4">四、append函数<span><a href="#0" class="back">回顶</a></span></h3>  
+    
+    <pre><code>
+    <span class="identifier">heros</span> <span class="operator">=</span> <span class="module">["绿巨人", "钢铁侠"]</span>
+    <span class="identifier">heros</span>.<span class="function">append</span>(<span class="string">"黑寡妇"</span>)
+    <span class="builtin">print</span>(<span class="identifier">heros</span>)
+    </code></pre>
+
+    <p class="text_cls">在列表末尾增加一个元素</p>
+
+    <h3 class="h2_cls" id="5">五、extend函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">heros</span>.<span class="function">extend</span>(<span class="module">["鹰眼","灭霸","雷神"]</span>)
+    <span class="builtin">print</span>(<span class="identifier">heros</span>)
+    </code></pre>
+
+    <p class="text_cls">extend参数必须是一个可迭代对象</p>
+    <h3 class="h2_cls" id="6">六、insert函数<span><a href="#0" class="back">回顶</a></span></h3>
+    
+    <pre><code>
+    <span class="identifier">s</span>.<span class="function">insert</span>(<span class="number">0</span>,<span class="number">0</span>)
+    <span class="identifier">s</span>.<span class="function">insert</span>(<span class="number">1</span>,<span class="operator">-</span><span class="number">1</span>)
+    <span class="identifier">s</span>.<span class="function">insert</span>(<span class="number">3</span>,<span class="number">21</span>)
+    <span class="builtin">print</span>(<span class="identifier">s</span>)
+    <span class="identifier">s</span>.<span class="function">insert</span>(<span class="function">len</span>(<span class="identifier">s</span>),<span class="number">6</span>)
+    </code></pre>
+    <p class="text_cls">
+        insert第一个参数是需要插入的下标,第二个参数是需要插入的元素。<br>
+        insert(len(s),6)是在末尾插入6。
+    </p>
+
+    <h3 class="h2_cls" id="7">七、remove函数<span><a href="#0" class="back">回顶</a></span></h3>
+
+    <pre><code>
+    <span class="identifier">heros</span>.<span class="function">remove</span>(<span class="string">"灭霸"</span>)
+    <span class="builtin">print</span>(<span class="identifier">heros</span>)
+    </code></pre>
+
+
+    <p class="text_cls">
+    remove可以删除指定元素,如果列表存在多个匹配的元素，
+    那么它只会删除第一个。如果指定的元素不存在,那么报错
+    如:heros.remove("美国队长")
+    就会报错
+    </p>
+
+    <h3 class="h2_cls" id="8">八、pop与clear函数<span><a href="#0" class="back">回顶</a></span></h3>
+
+    <pre><code>
+    <span class="identifier">heros</span>.<span class="function">pop</span>(<span class="number">2</span>)
+    <span class="builtin">print</span>(<span class="identifier">heros</span>)
+    <span class="identifier">heros</span>.<span class="function">clear</span>()
+    </code></pre>
+
+    <p class="text_cls">
+    pop()可以删除指定下标的元素;clear()可以删除整个列表元素。<br>
+    如果pop无参数，那么一般是删除最后一个元素。
+    </p>
+
+    <h3 class="h2_cls" id="9">九、排序函数sort与reverse<span><a href="#0" class="back">回顶</a></span></h3>
+    
+    <pre><code>
+    <span class="identifier">num</span> <span class="operator">=</span> <span class="module">[3,1,9,6,8,3,5,3]</span>
+    <span class="identifier">num</span>.<span class="function">sort</span>()
+    <span class="builtin">print</span>(<span class="identifier">num</span>)
+    <span class="identifier">num</span>.<span class="function">reverse</span>()
+    <span class="builtin">print</span>(<span class="identifier">num</span>)
+    <span class="identifier">num</span>.<span class="function">sort</span>(<span class="parameter">reverse</span><span class="operator">=</span><span class="boolean">True</span>)
+    <span class="builtin">print</span>(<span class="identifier">num</span>)
+    </code></pre>
+
+    <p class="text_cls">
+    num.sort()可以将列表进行就地从小到大排序
+    num.reverse()可以将列表就地从大到小排序
+    num.sort(reverse=true/false)如果sort的参数reverse为true,
+    那么就从大到小排序,如果reverse为false，那么就从小到大排序
+    </p>
+
+    <h3 class="h2_cls" id="10">十、count、index函数<span><a href="#0" class="back">回顶</a></span></h3>
+
+    <pre><code>
+    <span class="builtin">print</span>(<span class="identifier">num</span>.<span class="function">count</span>(<span class="number">3</span>))
+    <span class="identifier">index</span> <span class="operator">=</span> <span class="identifier">heros1</span>.<span class="function">index</span>(<span class="string">"绿巨人"</span>)
+    <span class="builtin">print</span>(<span class="identifier">index</span>)
+    <span class="identifier">heros1</span>[<span class="identifier">heros1</span>.<span class="function">index</span>(<span class="string">"绿巨人"</span>)] <span class="operator">=</span> <span class="string">"神奇女侠"</span>
+    <span class="builtin">print</span>(<span class="identifier">heros1</span>)
+    <span class="identifier">nums</span> <span class="operator">=</span> <span class="module">[3,1,9,6,8,3,5,3]</span>
+    <span class="builtin">print</span>(<span class="identifier">nums</span>.<span class="function">index</span>(<span class="number">3</span>,<span class="number">1</span>,<span class="number">7</span>))
+    <span class="identifier">nums2</span> <span class="operator">=</span> <span class="identifier">nums</span>.<span class="function">copy</span>()
+    <span class="builtin">print</span>(<span class="string">"i am the copy:"</span>,<span class="identifier">nums2</span>)
+    </code></pre>
+
+    <p class="text_cls">
+    num.count(目标)可以寻找目标在列表中出现的次数，heros1.index(目标)可以寻找目标对应的列表下标，当然这是一个参数的情况。如果有三个参数，index()格式就是：index(目标,start,end)也就是从start下标开始，一直寻找到end下标，寻找是否有目标，nums.copy()用来拷贝列表
+    </p>
+
+    <h3 class="h2_cls" id="11">十一、列表的加法和乘法<span><a href="#0" class="back">回顶</a></span></h3>
+    <pre><code>
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="module">[1, 2, 3]</span>
+    <span class="identifier">t</span> <span class="operator">=</span> <span class="module">[4, 5, 6]</span>
+    <span class="builtin">print</span>(<span class="identifier">s</span> <span class="operator">+</span> <span class="identifier">t</span>)
+    <span class="builtin">print</span>(<span class="identifier">s</span> <span class="operator">*</span> <span class="number">3</span>)
+    </code></pre>
+
+    <p class="text_cls">列表加法就是列表元素的衔接，列表乘法就是将列表元素重复。</p>
+
+    <h3 class="h2_cls" id="12">十二、二维列表操作<span><a href="#0" class="back">回顶</a></span></h3>
+
+    <pre><code>
+    <span class="identifier">matrix</span> <span class="operator">=</span> <span class="module">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</span>
+    <span class="comment">#*二维列表</span>
+    <span class="identifier">matrix</span> <span class="operator">=</span> [
+        [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],
+        [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],
+        [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]
+    ]
+    <span class="builtin">print</span>(<span class="identifier">matrix</span>)
+    <span class="comment">#*通过print可以直接打印二维列表</span>
+    <span class="keyword">for</span> <span class="identifier">i</span> <span class="keyword">in</span> <span class="identifier">matrix</span>:
+        <span class="keyword">for</span> <span class="identifier">each</span> <span class="keyword">in</span> <span class="identifier">i</span>:
+            <span class="builtin">print</span>(<span class="identifier">each</span>)
+    <span class="comment">#*这是访问二维列表的元素</span>
+    <span class="builtin">print</span>(<span class="string">"升级一下："</span>)
+    <span class="keyword">for</span> <span class="identifier">i</span> <span class="keyword">in</span> <span class="identifier">matrix</span>:
+        <span class="keyword">for</span> <span class="identifier">each</span> <span class="keyword">in</span> <span class="identifier">i</span>:
+            <span class="builtin">print</span>(<span class="identifier">each</span>, <span class="parameter">end</span><span class="operator">=</span><span class="string">' '</span>)
+            <span class="comment">#*end=' '作用是在打印each之后追加空格</span>
+        <span class="builtin">print</span>()
+    <span class="comment">#*print()作用是打印换行符</span>
+    <span class="builtin">print</span>(<span class="identifier">matrix</span>[<span class="number">0</span>])
+    <span class="comment">#*索引行</span>
+    <span class="builtin">print</span>(<span class="identifier">matrix</span>[<span class="number">1</span>][<span class="number">1</span>])
+    <span class="comment">#*索引元素</span>
+    <span class="comment">#*下面是建立二维列表的第二种方法</span>
+    <span class="identifier">A</span> <span class="operator">=</span> [<span class="number">0</span>] <span class="operator">*</span> <span class="number">3</span>
+    <span class="comment">#*先创建一个一维列表，再用循环创建二维列表</span>
+    <span class="keyword">for</span> <span class="identifier">i</span> <span class="keyword">in</span> <span class="function">range</span>(<span class="number">3</span>):
+        <span class="identifier">A</span>[<span class="identifier">i</span>] <span class="operator">=</span> [<span class="number">0</span>] <span class="operator">*</span> <span class="number">3</span>
+    <span class="builtin">print</span>(<span class="identifier">A</span>)
+    <span class="comment">#*B = [[0] * 3] * 3是错误的</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="13">十三、is关键字<span><a href="#0" class="back">回顶</a></span></h3>
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="string">'study'</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="string">'study'</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span> <span class="operator">is</span> <span class="identifier">y</span>)
+    <span class="comment">#*is运算符是同一性运算符，它作用是检测两个变量是否指向同个对象的运算符，</span>
+    <span class="comment">#*即用C的看法，就是看他们是否地址相同，相同则返回true，不同则返回false</span>
+    <span class="identifier">z</span> <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]
+    <span class="identifier">m</span> <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]
+    <span class="builtin">print</span>(<span class="identifier">z</span> <span class="operator">is</span> <span class="identifier">m</span>)
+    <span class="comment">#*尽管列表元素都相同，但是他们是可变的，与字符串是不一样的，他们的地址是不一样的，</span>
+    <span class="comment">#*也就是为元素开辟的内存空间是不同的</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="14">十四、特殊操作<span><a href="#0" class="back">回顶</a></span></h3>
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">x</span>
+    <span class="comment">#*赋值运算不是将数据放到变量之中，而是将数据与变量挂钩，这称为引用，</span>
+    <span class="comment">#*或者是变量的引用传递给另一个变量，正如上面的y = x，因此y和x可以同时改变一个数据</span>
+    <span class="comment">#*要想得到两份独立的数据，需要用到拷贝</span>
+    <span class="identifier">x</span>[<span class="number">1</span>] <span class="operator">=</span> <span class="number">0</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>,<span class="identifier">y</span>)
+    <span class="comment">#*第一，使用内置函数.copy()，可以实现浅拷贝</span>
+    <span class="identifier">z</span> <span class="operator">=</span> <span class="identifier">x</span>.<span class="function">copy</span>()
+    <span class="identifier">x</span>[<span class="number">1</span>] <span class="operator">=</span> <span class="number">2</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>,<span class="identifier">z</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="15">十五、列表拷贝操作<span><a href="#0" class="back">回顶</a></span></h3>
+
+    <pre><code>
+    <span class="comment">#*第二，使用切片，也可以实现浅拷贝</span>
+    <span class="identifier">m</span> <span class="operator">=</span> <span class="identifier">x</span>[:]
+    <span class="identifier">x</span>[<span class="number">1</span>] <span class="operator">=</span> <span class="number">0</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>,<span class="identifier">m</span>)
+    <span class="comment">#*这两种浅拷贝都可以实现将数据独立的作用</span>
+    <span class="comment">#*如果有嵌套对象，那么浅拷贝就不足够了，因为浅拷贝只能拷贝外层的对象，如果出现嵌套，就要使用深拷贝</span>
+    <span class="comment">#*深拷贝需要用到copy模块，其中，copy()函数是浅拷贝函数，deepcopy()函数是深拷贝函数</span>
+    <span class="comment">#*deepcopy()函数可以将所有元素拷贝下来，无论嵌套层级</span>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[[1,2,3], [4,5,6], [7,8,9]]</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">x</span>.<span class="function">copy</span>()
+    <span class="identifier">x</span>[<span class="number">1</span>][<span class="number">1</span>] <span class="operator">=</span> <span class="number">0</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>,<span class="identifier">y</span>)
+    <span class="comment">#*浅拷贝</span>
+    <span class="keyword">import</span> <span class="module">copy</span>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[[1,2,3], [4,5,6], [7,8,9]]</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">copy</span>.<span class="function">copy</span>(<span class="identifier">x</span>)
+    <span class="comment">#*浅拷贝</span>
+    <span class="identifier">x</span>[<span class="number">1</span>][<span class="number">1</span>] <span class="operator">=</span> <span class="number">0</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>,<span class="identifier">y</span>)
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[[1,2,3], [4,5,6] ,[7,8,9]]</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">copy</span>.<span class="function">deepcopy</span>(<span class="identifier">x</span>)
+    <span class="comment">#*深拷贝</span>
+    <span class="identifier">x</span>[<span class="number">1</span>][<span class="number">1</span>] <span class="operator">=</span> <span class="number">0</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>,<span class="identifier">y</span>)
+                </pre>
+            </pre>
+        </main>
+    </div>
+    <footer>
+        <div class="footer_cls">
+            <p class="footer_text_cls">
+                版权信息：<br>  <span><a href="#0" class="back">回顶</a></span>
+                学校：江西师范大学；学院：计算机信息工程学院；班级：计算机科学与技术2班；姓名：邓润华；
+                学号：202226202039；email：2312666252@qq.com；<br>
+                本网站为邓润华的独立创作成果，未经许可，不可转载。
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

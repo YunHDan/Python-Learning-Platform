@@ -1,0 +1,145 @@
+@font-face{
+    font-family: 站点;
+    src:url(../FONT/FZJZJW.TTF);
+}
+.form_container_cls {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    opacity: 0.6;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form_cls label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form_cls input[type="text"],
+.form_cls input[type="email"],
+.form_cls textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form_cls input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form_cls input[type="submit"]:hover {
+    background-color: #45a049;
+}
+.body_cls {
+    background-image: url(../IMG/message_back.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.header_cls {
+    display: flex;
+}
+.head_cls {
+    font-size: 60px;
+    font-family: 站点;
+    margin: 5px;
+    height: 100px;
+    position: absolute;
+    top: 3.5%;
+    left: 19%;
+    width: 600px;
+    color: white;
+}
+.logo_cls {
+    border-style: solid;
+    border-color: white;
+    overflow: hidden;
+    transition-property: border-radius;
+    transition-duration: 1.2s;
+    border-radius: 25px;
+}
+.footer_cls {
+    border-style: solid;
+    border-color: white;
+    margin: 5px;
+    border-radius: 5px;
+}
+.footer_text_cls {
+    margin: 25px;
+    font-family: "幼圆";
+    font-size: 25px;
+    color: rgb(243, 109, 109);
+}
+.head_hr_cls {
+    border: none;
+    border-top: 3px solid black;
+    margin: 3px;
+}
+.nav_cls {
+    height: 15%;
+    width: 100%;   
+}
+.list_cls {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+.link_cls {
+    text-decoration: none;
+    font-family: '幼圆';
+    font-weight: bold;
+    font-size: 25px;
+    margin: 5px;
+    color: rgb(26, 88, 78);
+}
+.nav_li_cls {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 10px;
+    height: 35px;
+    font-size: 25px;
+    font-family: '幼圆';
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(81, 80, 80);
+    transition-property: background-color;
+    transition-duration: 1.2s;
+    padding: 5px;
+    margin: 0;
+}
+.nav_li_cls:hover {
+    background-color: lightskyblue; 
+}
+.back {
+    float: right;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    transition-property: color;
+    transition-duration: 0.5s;
+    font-family: '幼圆';
+    border-style: solid;
+    border-radius: 5px;
+    border-color: lightblue;
+    background-color: #66d9ef;
+}
+.back:hover {
+    color: gray;
+}
+.logo_cls:hover {
+    border-radius: 50%;
+}

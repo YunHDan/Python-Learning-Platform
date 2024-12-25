@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python字典知识</title>
+    <link rel="stylesheet" href="../CSS/dict.css">
+</head>
+<body class="body_cls">
+    <header class="header_cls" id="0">
+        <a href="../HTML/index.html"><img src="../IMG/logo.jpg" alt="网站logo" height="200px" width="300px" class="logo_cls"></a>
+        <h1 class="head_cls">
+            Python学习小站
+        </h1>
+    </header>
+    <hr class="head_hr_cls">
+    <nav class="nav_cls">
+        <ul class="list_cls">
+            <a href="../HTML/index.html" class="link_cls"><li class="nav_li_cls">开始</li></a>
+            <a href="../HTML/python_list.html" class="link_cls"><li class="nav_li_cls">Python列表</li></a>
+            <a href="../HTML/python_string.html" class="link_cls"><li class="nav_li_cls">Python字符串</li></a>
+            <a href="../HTML/python_sequence.html" class="link_cls"><li class="nav_li_cls">Python序列</li></a>
+            <a href="../HTML/python_dict.html" class="link_cls"><li class="nav_li_cls">Python字典</li></a>
+            <a href="../HTML/python_set.html" class="link_cls"><li class="nav_li_cls">Python集合</li></a>
+            <a href="../HTML/python_file.html" class="link_cls"><li class="nav_li_cls">Python文件</li></a>
+            <a href="../HTML/python_function.html" class="link_cls"><li class="nav_li_cls">Python函数</li></a>
+            <a href="../HTML/message.html" class="link_cls"><li class="nav_li_cls">联系我们</li></a>
+        </ul>
+    </nav>
+    <hr class="head_hr_cls">
+    <div class="middle_cls">
+        <nav class="toc_nav_cls">
+            <h2 class="h2_cls">
+                目录
+            </h2>
+            <ul class="list2_cls">
+                <li class="toc_cls"><a href="#1" class="list_li_cls">创建字典、type函数</a></li>
+                <li class="toc_cls"><a href="#2" class="list_li_cls">键值对思想</a></li>
+                <li class="toc_cls"><a href="#3" class="list_li_cls">fromkeys函数</a></li>
+                <li class="toc_cls"><a href="#4" class="list_li_cls">pop函数</a></li>
+                <li class="toc_cls"><a href="#5" class="list_li_cls">popitem函数</a></li>
+                <li class="toc_cls"><a href="#6" class="list_li_cls">del关键字</a></li>
+                <li class="toc_cls"><a href="#7" class="list_li_cls">update修改键的值</a></li>
+                <li class="toc_cls"><a href="#8" class="list_li_cls">get方法查询键</a></li>
+                <li class="toc_cls"><a href="#9" class="list_li_cls">setdefault方法</a></li>
+                <li class="toc_cls"><a href="#10" class="list_li_cls">keys、values、items方法</a></li>
+                <li class="toc_cls"><a href="#11" class="list_li_cls">字典的拷贝</a></li>
+                <li class="toc_cls"><a href="#12" class="list_li_cls">字典的len函数</a></li>
+                <li class="toc_cls"><a href="#13" class="list_li_cls">in与not in关键字</a></li>
+                <li class="toc_cls"><a href="#14" class="list_li_cls">list函数将字典转换为列表</a></li>
+                <li class="toc_cls"><a href="#15" class="list_li_cls">对字典使用next函数</a></li>
+                <li class="toc_cls"><a href="#16" class="list_li_cls">对字典排序</a></li>
+                <li class="toc_cls"><a href="#17" class="list_li_cls">嵌套字典</a></li>
+            </ul>
+        </nav>
+        <main class="main_cls">
+
+    <h3 class="h2_cls" id="1">一、创建字典、type函数<span><a href="#0" class="back">回顶</a></span></h3> 
+    
+    <pre><code>
+    <span class="comment">'''
+    怎么创建一个字典？考虑下面的基础方法：
+    '''</span>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">{"吕布":"口口布", "关羽":"关习习"}</span>
+
+    <span class="comment">#*  通过大括号，元素:元素，的方式建立一个字典</span>
+    <span class="comment">#*  冒号左边是键，冒号右边是值，因此冒号，冒号左右的内容统称为一个键值对，</span>
+    <span class="comment">#*  键和值是一一映射关系</span>
+    <span class="comment">#*  我们可以通过type函数查看字典类型</span>
+    <span class="builtin">print</span>(<span class="function">type</span>(<span class="identifier">x</span>))
+
+    <span class="comment">#TODO   下面是六种创建字典的方式</span>
+    <span class="comment">#TODO   大括号冒号类</span>
+    <span class="identifier">a</span> <span class="operator">=</span> <span class="module">{"吕布":"口口布", "关羽":"关习习"}</span>  
+    <span class="comment">#TODO   用dict函数创建一个字典，参数分别指定键与值，用等号配对</span>
+    <span class="identifier">b</span> <span class="operator">=</span> <span class="function">dict</span>(<span class="parameter">吕布</span><span class="operator">=</span><span class="string">"口口布"</span>, <span class="parameter">关羽</span><span class="operator">=</span><span class="string">"关习习"</span>, <span class="parameter">刘备</span><span class="operator">=</span><span class="string">"刘又田"</span>)   
+    <span class="comment">#TODO   dict参数是一个列表，列表内的键值对以元组的方式表示，逗号配对键与值</span>
+    <span class="identifier">c</span> <span class="operator">=</span> <span class="function">dict</span>(<span class="module">[("吕布", "口口布"), ("关羽", "关习习"), ("刘备", "刘又田")]</span>)
+    <span class="comment">#TODO   用将第一种方法作为dict函数的参数，有点鸡肋</span>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="function">dict</span>(<span class="module">{"吕布":"口口布", "关羽":"关习习"}</span>)
+    <span class="comment">#TODO   在dict函数内也可以混合使用多种方法，如同时使用大括号冒号类与等号配对类</span>
+    <span class="identifier">e</span> <span class="operator">=</span> <span class="function">dict</span>(<span class="module">{"吕布":"口口布", "关羽":"关习习"}</span>, <span class="parameter">刘备</span><span class="operator">=</span><span class="string">"刘又田"</span>)
+    <span class="comment">#TODO   用zip函数作为dict函数的参数，zip的参数是两个列表，第一个列表是键的内容，第二个列表是值</span>
+    <span class="identifier">f</span> <span class="operator">=</span> <span class="function">dict</span>(<span class="function">zip</span>(<span class="module">["吕布", "关羽", "刘备"]</span>, <span class="module">["口口布", "关习习", "刘又田"]</span>))
+    <span class="comment">#*  我们发现这六种方法等价</span>
+    <span class="builtin">print</span>(<span class="identifier">a</span> <span class="operator">==</span> <span class="identifier">b</span> <span class="operator">==</span> <span class="identifier">c</span> <span class="operator">==</span> <span class="identifier">e</span> <span class="operator">==</span> <span class="identifier">d</span> <span class="operator">==</span> <span class="identifier">f</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="2">二、键值对思想<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#?那么如何找到字典中指定键的值呢？可以通过方括号加键的方式索引之</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>[<span class="string">"关羽"</span>],<span class="identifier">x</span>[<span class="string">"吕布"</span>])
+
+    <span class="comment">#*  可以通过方括号索引进行值的修改，当然，如果指定的键在字典中不存在，</span>
+    <span class="comment">#*  那么将会在字典中插入这个新的键值对</span>
+    <span class="identifier">x</span>[<span class="string">"刘备"</span>] <span class="operator">=</span> <span class="string">"刘又田"</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>)
+
+    <span class="comment">#*前面说了，可以修改字典中的值</span>
+    <span class="identifier">d</span>[<span class="string">'S'</span>] <span class="operator">=</span> <span class="number">70</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    <span class="identifier">d</span>[<span class="string">'u'</span>] <span class="operator">=</span> <span class="number">67</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="3">三、fromkeys函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   可以使用dict.fromkeys()方法初始化，fromkeys接收两个参数，</span>
+    <span class="comment">#TODO   第一个参数是一个可迭代对象，比如字符串，列表，元组，可迭代对象的每一个元素作为字典的键</span>
+    <span class="comment">#TODO   第二个参数是初始化的值，将字典中的键都赋以相同的指定的值</span>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="function">dict</span>.<span class="function">fromkeys</span>(<span class="string">"Study"</span>, <span class="number">250</span>)
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="4">四、pop函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   可以用.pop()方法进行字典指定键值对的删除，.pop()返回指定键的值，</span>
+    <span class="comment">#TODO   如下面的打印，将pop方法返回的那个删除键的值打印出来</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>.<span class="function">pop</span>(<span class="string">'d'</span>))
+    <span class="identifier">d</span>.<span class="function">pop</span>(<span class="string">'S'</span>)
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    <span class="comment">#!  d.pop("狗")是不被允许的，这会抛出异常，那么如果不想抛出异常，可以设置default的值</span>
+    <span class="comment">#!  比如：d.pop("狗", "没有")</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="5">五、popitem函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#*  在python3.7之前，字典是无序的，因此popitem()方法将字典中随机的键值对删除</span>
+    <span class="comment">#*  但是python3.7之后，字典是有序的，因此popitem()方法默认将字典中最后一次输入的</span>
+    <span class="comment">#*  键值对删除，下面来演示这个方法</span>
+    <span class="identifier">d</span>.<span class="function">popitem</span>()
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="6">六、del关键字<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   回顾一下，del关键字可以将指定内容删除，它同样可以删除指定键值对，甚至是字典</span>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="function">dict</span>.<span class="function">fromkeys</span>(<span class="string">"Study"</span>, <span class="number">250</span>)
+    <span class="keyword">del</span> <span class="identifier">d</span>[<span class="string">'y'</span>]
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    <span class="keyword">del</span> <span class="identifier">d</span>
+    <span class="comment">#!  这时，如果print(d)则会抛出异常，因为此时d字典已经被清除，</span>
+    <span class="comment">#!  如果只想清除字典中的全部元素，可以考虑下面的方法</span>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="function">dict</span>.<span class="function">fromkeys</span>(<span class="string">"Study"</span>, <span class="number">250</span>)
+    <span class="identifier">d</span>.<span class="function">clear</span>()
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="7">七、update修改键的值<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="function">dict</span>.<span class="function">fromkeys</span>(<span class="string">"Study"</span>)
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    <span class="identifier">d</span>[<span class="string">'S'</span>] <span class="operator">=</span> <span class="number">115</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    <span class="identifier">d</span>.<span class="function">update</span>(<span class="module">{'t':105, 'u':104}</span>)
+    <span class="identifier">d</span>.<span class="function">update</span>(<span class="parameter">d</span><span class="operator">=</span><span class="string">'70'</span>, <span class="parameter">y</span><span class="operator">=</span><span class="string">'67'</span>)
+    <span class="builtin">print</span>(<span class="identifier">d</span>)
+    <span class="comment">#TODO   如果想要修改键的值，可以考虑索引方法和update函数</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="8">八、get方法查询键<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   想要查找键中的值，可以直接索引寻找</span>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="function">dict</span>.<span class="function">fromkeys</span>(<span class="string">"I love Sudy"</span>)
+    <span class="identifier">d</span>[<span class="string">"S"</span>] <span class="operator">=</span> <span class="number">250</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>[<span class="string">"S"</span>])
+
+    <span class="comment">#*  但是当没有该键时，会报异常，可以考虑get函数，它的第一个参数是寻找的键，</span>
+    <span class="comment">#*  第二个参数是找不到该键时返回的字符串，参照下面的使用例子</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>.<span class="function">get</span>(<span class="string">"t"</span>, <span class="string">"这里没有t"</span>))
+    </code></pre>
+    
+    <h3 class="h2_cls" id="9">九、setdefault方法<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   如果想在字典中找指定的键，而找到则返回键对应的值，找不到则新建该键，</span>
+    <span class="comment">#TODO   然后把第二个参数default的值作为新键的值，同时返回该新建值，参考下面的使用例子</span>
+    <span class="identifier">d</span>.<span class="function">setdefault</span>(<span class="string">"t"</span>, <span class="string">"220"</span>)
+    <span class="builtin">print</span>(<span class="identifier">d</span>[<span class="string">"t"</span>])
+    <span class="builtin">print</span>(<span class="identifier">d</span>.<span class="function">setdefault</span>(<span class="string">"M"</span>, <span class="string">"9"</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="10">十、keys、values、items方法<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   我们可以设置眼睛，来监视字典中的情况，这就是视图对象</span>
+    <span class="comment">#TODO   items方法可以返回字典中的键值对的视图对象，keys方法可以返回字典中的键的视图对象</span>
+    <span class="comment">#TODO   values方法可以返回字典中值的视图对象，参考下面的使用例子</span>
+    <span class="identifier">keys</span> <span class="operator">=</span> <span class="identifier">d</span>.<span class="function">keys</span>()
+    <span class="identifier">values</span> <span class="operator">=</span> <span class="identifier">d</span>.<span class="function">values</span>()
+    <span class="identifier">items</span> <span class="operator">=</span> <span class="identifier">d</span>.<span class="function">items</span>()
+    <span class="builtin">print</span>(<span class="identifier">items</span>, <span class="identifier">keys</span>, <span class="identifier">values</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="11">十一、字典的拷贝<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#*  字典也可以浅拷贝，可以使用copy函数</span>
+    <span class="identifier">e</span> <span class="operator">=</span> <span class="identifier">d</span>.<span class="function">copy</span>()
+    <span class="builtin">print</span>(<span class="identifier">e</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="12">十二、字典的len函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#?  有时候我们想知道这本字典有多少个单词，那么可以考虑使用len函数，</span>
+    <span class="comment">#*  len函数返回字典中键值对的个数，考虑下面的使用例子</span>
+    <span class="builtin">print</span>(<span class="function">len</span>(<span class="identifier">d</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="13">十三、in与not in关键字<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#?  我们想要知道某个键值对是不是在字典中，就像我们想要知道某个单词和他的注释是否在字典中一样</span>
+    <span class="comment">#*  我们可以考虑使用in 和not in 关键字，in 和 not in 关键字判断键是否在字典中，</span>
+    <span class="comment">#*  在则返回True， 不在则返回False，当然，如果键都不在字典中了，值当然也就不存在了</span>
+    <span class="comment">#*  键和值是同步捆绑的，考虑下面的使用例子</span>
+    <span class="builtin">print</span>(<span class="string">"u"</span> <span class="operator">in</span> <span class="identifier">d</span>)
+    <span class="builtin">print</span>(<span class="string">"Q"</span> <span class="operator">not in</span> <span class="identifier">d</span>)
+    <span class="builtin">print</span>(<span class="string">"t"</span> <span class="operator">not in</span> <span class="identifier">d</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="14">十四、list函数将字典转换为列表<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#?  通常我们想抽出字典中所有的键，或者抽取出字典中所有的值，我们怎么做？</span>
+    <span class="comment">#?  list函数将迭代器转化为列表，如果将list函数作用于字典会怎么样？</span>
+    <span class="comment">#*  list(d)相当于list(d.keys())，它将字典中的键形成一个列表，</span>
+    <span class="comment">#*  当然，如果想把值抽取出来形成一个列表，可以考虑list(d.values())</span>
+    <span class="comment">#*  考虑下面的使用例子</span>
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="identifier">d</span>.<span class="function">keys</span>()))
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="identifier">d</span>))
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="identifier">d</span>.<span class="function">values</span>()))
+    </code></pre>
+
+    <h3 class="h2_cls" id="15">十五、对字典使用next函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#?  如果我们想一个个抽取出字典中的键呢？</span>
+    <span class="comment">#*  回顾一下iter函数，它将得到序列的迭代器，它也可以作用于字典，</span>
+    <span class="comment">#*  iter函数作用于字典，将得到字典所有键的迭代器，</span>
+    <span class="comment">#*  然后就可以用next函数抽取迭代器中的一个个键了，考虑下面的使用例子</span>
+    <span class="identifier">e</span> <span class="operator">=</span> <span class="function">iter</span>(<span class="identifier">d</span>)
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">e</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">e</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">e</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">e</span>))
+    </code></pre>
+ 
+    <h3 class="h2_cls" id="16">十六、对字典排序<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#*  之前我们提到，字典在python3.7之前是无序的，但是现在我们的字典是有序的了，</span>
+    <span class="comment">#*  既然字典有序，那么我们就可以使用sorted和reversed函数对其进行排序</span>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="function">dict</span>.<span class="function">fromkeys</span>(<span class="string">"I love Study"</span>, <span class="number">260</span>)
+    <span class="identifier">d</span>[<span class="string">"S"</span>] <span class="operator">=</span> <span class="number">110</span>
+    <span class="identifier">d</span>[<span class="string">"I"</span>] <span class="operator">=</span> <span class="number">90</span>
+    <span class="identifier">d</span>[<span class="string">" "</span>] <span class="operator">=</span> <span class="number">20</span>
+    <span class="identifier">d</span>[<span class="string">"o"</span>] <span class="operator">=</span> <span class="number">1000</span>
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="function">reversed</span>(<span class="identifier">d</span>.<span class="function">values</span>())))
+    <span class="builtin">print</span>(<span class="function">sorted</span>(<span class="identifier">d</span>.<span class="function">values</span>()))
+    <span class="builtin">print</span>(<span class="function">sorted</span>(<span class="identifier">d</span>.<span class="function">values</span>(), <span class="parameter">reverse</span><span class="operator">=</span><span class="boolean">True</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="17">十七、嵌套字典<span><a href="#0" class="back">回顶</a></span></h3> 
+    
+    <pre><code>
+    <span class="comment">#*  字典的值可以嵌套的，可以嵌套字典，可以嵌套序列</span>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="module">{"吕布":{"语文":60, "数学":70, "英语":90}, "关羽":{"语文":80, "数学":90, "英语":70}}</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>)    <span class="comment">#TODO   print字典名，则打印整个字典，无论嵌套，这没什么问题</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>[<span class="string">"吕布"</span>][<span class="string">"数学"</span>])    <span class="comment">#TODO   当字典是嵌套字典时，索引字典中的值通常是：字典.[键][键]的形式</span>
+    <span class="identifier">d</span> <span class="operator">=</span> <span class="module">{"吕布":[60, 70, 80], "关羽":[80, 90, 70]}</span>  <span class="comment">#*  值可以是列表，也可以是字符串，元组</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>[<span class="string">"吕布"</span>][<span class="number">1</span>]) <span class="comment">#*  这时候的索引，通常是：字典.[键][下标]的形式</span>
+    <span class="builtin">print</span>(<span class="identifier">d</span>[<span class="string">"关羽"</span>][<span class="number">2</span>])
+                </code>
+            </pre>
+        </main>
+    </div>
+    <footer>
+        <div class="footer_cls">
+            <p class="footer_text_cls">
+                版权信息：<br>  <span><a href="#0" class="back">回顶</a></span>
+                学校：江西师范大学；学院：计算机信息工程学院；班级：计算机科学与技术2班；姓名：邓润华；
+                学号：202226202039；email：2312666252@qq.com；<br>
+                本网站为邓润华的独立创作成果，未经许可，不可转载。
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

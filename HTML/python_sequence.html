@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python序列知识</title>
+    <link rel="stylesheet" href="../CSS/sequence.css">
+</head>
+<body class="body_cls">
+    <header class="header_cls" id="0">
+        <a href="../HTML/index.html"><img src="../IMG/logo.jpg" alt="网站logo" height="200px" width="300px" class="logo_cls"></a>
+        <h1 class="head_cls">
+            Python学习小站
+        </h1>
+    </header>
+    <hr class="head_hr_cls">
+    <nav class="nav_cls">
+        <ul class="list_cls">
+            <a href="../HTML/index.html" class="link_cls"><li class="nav_li_cls">开始</li></a>
+            <a href="../HTML/python_list.html" class="link_cls"><li class="nav_li_cls">Python列表</li></a>
+            <a href="../HTML/python_string.html" class="link_cls"><li class="nav_li_cls">Python字符串</li></a>
+            <a href="../HTML/python_sequence.html" class="link_cls"><li class="nav_li_cls">Python序列</li></a>
+            <a href="../HTML/python_dict.html" class="link_cls"><li class="nav_li_cls">Python字典</li></a>
+            <a href="../HTML/python_set.html" class="link_cls"><li class="nav_li_cls">Python集合</li></a>
+            <a href="../HTML/python_file.html" class="link_cls"><li class="nav_li_cls">Python文件</li></a>
+            <a href="../HTML/python_function.html" class="link_cls"><li class="nav_li_cls">Python函数</li></a>
+            <a href="../HTML/message.html" class="link_cls"><li class="nav_li_cls">联系我们</li></a>
+        </ul>
+    </nav>
+    <hr class="head_hr_cls">
+    <div class="middle_cls">
+        <nav class="toc_nav_cls">
+            <h2 class="h2_cls">
+                目录
+            </h2>
+            <ul class="list2_cls">
+                <li class="toc_cls"><a href="#1" class="list_li_cls">序列加法与序列乘法</a></li>
+                <li class="toc_cls"><a href="#2" class="list_li_cls">id函数</a></li>
+                <li class="toc_cls"><a href="#3" class="list_li_cls">is关键字</a></li>
+                <li class="toc_cls"><a href="#4" class="list_li_cls">in与not in关键字</a></li>
+                <li class="toc_cls"><a href="#5" class="list_li_cls">del关键字与切片删除法</a></li>
+                <li class="toc_cls"><a href="#6" class="list_li_cls">clear函数</a></li>
+                <li class="toc_cls"><a href="#7" class="list_li_cls">list函数</a></li>
+                <li class="toc_cls"><a href="#8" class="list_li_cls">tuple函数</a></li>
+                <li class="toc_cls"><a href="#9" class="list_li_cls">str函数</a></li>
+                <li class="toc_cls"><a href="#10" class="list_li_cls">序列的min与max函数</a></li>
+                <li class="toc_cls"><a href="#11" class="list_li_cls">range迭代器</a></li>
+                <li class="toc_cls"><a href="#12" class="list_li_cls">序列的sum函数</a></li>
+                <li class="toc_cls"><a href="#13" class="list_li_cls">sort与sorted</a></li>
+                <li class="toc_cls"><a href="#14" class="list_li_cls">reverse与reversed函数</a></li>
+                <li class="toc_cls"><a href="#15" class="list_li_cls">all与any函数</a></li>
+                <li class="toc_cls"><a href="#16" class="list_li_cls">enumerate函数</a></li>
+                <li class="toc_cls"><a href="#17" class="list_li_cls">zip函数</a></li>
+                <li class="toc_cls"><a href="#18" class="list_li_cls">iteretools的zip_loggest函数</a></li>
+                <li class="toc_cls"><a href="#19" class="list_li_cls">map函数</a></li>
+                <li class="toc_cls"><a href="#20" class="list_li_cls">filter函数与map函数进阶</a></li>
+                <li class="toc_cls"><a href="#21" class="list_li_cls">iter函数</a></li>
+                <li class="toc_cls"><a href="#22" class="list_li_cls">next函数</a></li>
+            </ul>
+        </nav>
+        <main class="main_cls">
+    <h3 class="h2_cls" id="1">一、序列加法与序列乘法<span><a href="#0" class="back">回顶</a></span></h3> 
+    <pre><code>
+    <span class="identifier">s1</span> <span class="operator">=</span> <span class="module">[1, 2, 3]</span>
+    <span class="identifier">s2</span> <span class="operator">=</span> <span class="module">[4, 5, 6]</span>
+    <span class="builtin">print</span>(<span class="identifier">s1</span><span class="operator">+</span><span class="identifier">s2</span>)
+    <span class="comment">#TODO   序列加法将序列拼接起来</span>
+
+    <span class="identifier">s3</span> <span class="operator">=</span> <span class="module">(1, 2, 3)</span>
+    <span class="identifier">s4</span> <span class="operator">=</span> <span class="module">(4, 5, 6)</span>
+    <span class="builtin">print</span>(<span class="identifier">s3</span>,<span class="identifier">s4</span>)
+    <span class="builtin">print</span>(<span class="identifier">s2</span><span class="operator">*</span><span class="number">3</span>,<span class="identifier">s4</span><span class="operator">*</span><span class="number">3</span>)
+    <span class="comment">#TODO   序列乘法将序列重复若干次</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="2">二、id函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">s5</span> <span class="operator">=</span> <span class="module">[1, 2, 3]</span>
+    <span class="builtin">print</span>(<span class="function">id</span>(<span class="identifier">s5</span>))
+    <span class="identifier">s5</span> <span class="operator">*=</span> <span class="number">2</span>
+    <span class="builtin">print</span>(<span class="identifier">s5</span>,<span class="function">id</span>(<span class="identifier">s5</span>))
+    <span class="identifier">t</span> <span class="operator">=</span> <span class="module">(1, 2, 3)</span>
+    <span class="builtin">print</span>(<span class="function">id</span>(<span class="identifier">t</span>))
+    <span class="identifier">t</span> <span class="operator">*=</span> <span class="number">2</span>
+    <span class="builtin">print</span>(<span class="identifier">t</span>,<span class="function">id</span>(<span class="identifier">t</span>))
+    <span class="comment">#TODO   id函数可以获取一个变量的id值，对于一个可变序列，如列表，其元素发生改变，元素增多，其列表的id值都是不变的，</span>
+    <span class="comment">#TODO   但是对于不变序列，如元组和字符串，内容发生改变，那么id值就会发生改变</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="3">三、is关键字<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">x1</span> <span class="operator">=</span> <span class="string">"I love Study"</span>
+    <span class="identifier">y1</span> <span class="operator">=</span> <span class="string">"I love Study"</span>
+    <span class="builtin">print</span>(<span class="string">"相同字符串id是否一样:"</span>, <span class="identifier">x1</span> <span class="operator">is</span> <span class="identifier">y1</span>)
+    <span class="identifier">x2</span> <span class="operator">=</span> <span class="module">[1, 2, 3]</span>
+    <span class="identifier">y2</span> <span class="operator">=</span> <span class="module">[1, 2, 3]</span>
+    <span class="builtin">print</span>(<span class="string">"相同列表id是否一样:"</span>, <span class="identifier">x2</span> <span class="operator">is</span> <span class="identifier">y2</span>)
+    <span class="comment">#TODO   判断序列id值是否相等，使用is运算符，语法为 A is B，如果相同，则返回True，反之返回False，同理is not则是判断他们是否不相等</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="4">四、in与not in关键字<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="builtin">print</span>(<span class="string">"我"</span> <span class="operator">in</span> <span class="string">"我爱学习"</span>)
+    <span class="builtin">print</span>(<span class="string">"C"</span> <span class="operator">not in</span> <span class="string">"MyC"</span>)
+    <span class="comment">#TODO   in运算符与not in运算符语法为：A in B(A not in B)，in判断A序列是否在B序列内，not in作用反之</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="5">五、del关键字与切片删除法<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="keyword">del</span> <span class="identifier">x1</span>, <span class="identifier">x2</span>
+    <span class="builtin">print</span>(<span class="identifier">y1</span>,<span class="identifier">y2</span>)
+    <span class="comment">#TODO   del关键字用来删除指定对象</span>
+
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5]</span>
+    <span class="keyword">del</span> <span class="identifier">x</span>[<span class="number">1</span>:<span class="number">4</span>]
+    <span class="builtin">print</span>(<span class="identifier">x</span>)
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5]</span>
+    <span class="identifier">x</span>[<span class="number">1</span>:<span class="number">4</span>] <span class="operator">=</span> <span class="module">[]</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>)
+    <span class="comment">#TODO   可以使用切片语法删除列表中的某一范围元素，但是列表还存在，当然单纯用切片语法也可以实现，那就是将空列表赋给指定区域的列表</span>
+
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5]</span>
+    <span class="keyword">del</span> <span class="identifier">x</span>[<span class="operator">::</span><span class="number">2</span>]
+    <span class="builtin">print</span>(<span class="identifier">x</span>)
+    <span class="comment">#TODO   del语句结合切片语法还可以设置步长进行隔各删除</span>
+    <span class="comment">#!  'str' object does not support item deletion 不能用del直接删除字符串的字符</span>
+    <span class="comment">#!  x[::2] = []是不被允许的</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="6">六、clear函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5]</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5]</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>.<span class="function">clear</span>())
+    <span class="keyword">del</span> <span class="identifier">y</span>[<span class="operator">:</span>]
+    <span class="builtin">print</span>(<span class="identifier">y</span>)
+    <span class="comment">#TODO   上面的语句都是删除整个列表的元素，但是列表还存在，为空，只有当del y时，y才不存在</span>
+    <span class="comment">#*  clear()函数只作用于列表，而del语句可以作用于序列</span>
+    <span class="comment">#!  del + 切片，是删除可变序列中的元素，而单独的del则删除整个序列</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="7">七、list函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="function">list</span>(<span class="string">"I love Study"</span>)
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="function">list</span>(<span class="module">(1, 2, 3, 4, 5)</span>)
+    <span class="builtin">print</span>(<span class="identifier">x</span>,<span class="identifier">y</span>)
+    <span class="comment">#TODO   list函数可以将序列转化为列表</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="8">八、tuple函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 2, 3 ,4, 5]</span>
+    <span class="identifier">z</span> <span class="operator">=</span> <span class="string">"I love Python"</span>
+    <span class="identifier">y1</span> <span class="operator">=</span> <span class="function">tuple</span>(<span class="identifier">x</span>)
+    <span class="identifier">y2</span> <span class="operator">=</span> <span class="function">tuple</span>(<span class="identifier">z</span>)
+    <span class="builtin">print</span>(<span class="identifier">y1</span>, <span class="identifier">y2</span>)
+    <span class="comment">#TODO   tuple函数可以将序列转化为元组</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="9">九、str函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5]</span>
+    <span class="identifier">z</span> <span class="operator">=</span> <span class="string">"I love Study"</span>
+    <span class="identifier">y1</span> <span class="operator">=</span> <span class="function">str</span>(<span class="identifier">x</span>)
+    <span class="identifier">y2</span> <span class="operator">=</span> <span class="function">str</span>(<span class="identifier">z</span>)
+    <span class="builtin">print</span>(<span class="identifier">y1</span>,<span class="identifier">y2</span>)
+    <span class="comment">#TODO   str函数可以将序列转化为字符串，是单纯给序列加上引号罢了，圆括号和方括号还在</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="10">十、序列的min与max函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5]</span>
+    <span class="builtin">print</span>(<span class="function">min</span>(<span class="identifier">s</span>))
+    <span class="identifier">t</span> <span class="operator">=</span> <span class="string">"I love Study"</span>
+    <span class="builtin">print</span>(<span class="function">max</span>(<span class="identifier">t</span>))
+    <span class="comment">#TODO   min与max函数将得到序列中的最大值，如果参数是字符串，那么将按照阿斯克码(字典序)来确定最值</span>
+
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="module">[]</span>
+    <span class="builtin">print</span>(<span class="function">min</span>(<span class="identifier">s</span>,<span class="parameter">default</span><span class="operator">=</span><span class="string">"It is empty!"</span>))
+    <span class="comment">#!  如果单纯用min(s)作用求空列表的话，会报错，但是如果设置了第二个参数default的内容，那么程序不会报错，而是打印这段default内容</span>
+
+    <span class="builtin">print</span>(<span class="function">max</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">6</span>))
+    <span class="builtin">print</span>(<span class="function">min</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">6</span>))
+    <span class="comment">#!  print(min(1,"can you?"))这是不被允许的，因为参数类型不一样</span>
+    <span class="comment">#TODO   min与max函数可以有更多的参数，于是函数会在这些参数里面求最值</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="11">十一、range迭代器<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="function">range</span>(<span class="number">2</span> <span class="operator">**</span> <span class="number">100</span>)
+    <span class="comment">#TODO   range是一个迭代器，用来生成指定整数范围的列表，规则是左闭右开，如 2**100 生成 0 ~ 2**100 - 1的列表</span>
+    <span class="builtin">print</span>(<span class="identifier">x</span>)
+    <span class="comment">#!  lx = len(x)</span>
+    <span class="comment">#!  print(lx)</span>
+    <span class="comment">#!  注意，len函数如果检测的数值过大，就会报错</span>
+    <span class="comment">#TODO   len函数可以得到一个序列的长度</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="12">十二、序列的sum函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="module">[1, 0, 0, 8, 6]</span>
+    <span class="identifier">summary1</span> <span class="operator">=</span> <span class="function">sum</span>(<span class="identifier">s</span>)
+    <span class="builtin">print</span>(<span class="identifier">summary1</span>)
+    <span class="comment">#!  haha = "can you calculate me ?"</span>
+    <span class="comment">#!  summary2 = sum(haha)</span>
+    <span class="comment">#!  print(summary2)</span>
+    <span class="comment">#!  上面的代码是不被允许的，因为sum函数不能计算字符串中元素和</span>
+    <span class="comment">#TODO   sum函数将计算序列的元素和</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="13">十三、sort与sorted<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 0, 6]</span>
+    <span class="builtin">print</span>(<span class="function">sorted</span>(<span class="identifier">s</span>), <span class="identifier">s</span>) 
+    <span class="builtin">print</span>(<span class="function">sorted</span>(<span class="string">"I love Study"</span>))
+    <span class="builtin">print</span>(<span class="function">sorted</span>(<span class="module">(1, 2, 3, 4, 5)</span>))
+    <span class="comment">#TODO   sorted函数针对序列，以列表的形式返回排序结果，而原序列不变，默认从小到大排序</span>
+
+    <span class="comment">#!  序列.sort()函数将原序列就地排序，没有返回值</span>
+    <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="function">sort</span>())
+
+    <span class="comment">#*  sorted也有第三个参数，reverse=参数如果为True，就倒序排序，从大到小</span>
+    <span class="builtin">print</span>(<span class="function">sorted</span>(<span class="identifier">s</span>,<span class="parameter">reverse</span><span class="operator">=</span><span class="boolean">True</span>))
+
+    <span class="comment">#*  sorted的第二个参数是key，是排序方法，通常是某些函数，如：len，将根据元素长度进行排序，</span>
+    <span class="comment">#*  通常作用于字符串，根据字符串长度排序</span>
+    <span class="identifier">t</span> <span class="operator">=</span> <span class="module">["Study","Apple", "Book", "Banana", "Pen"]</span>
+    <span class="builtin">print</span>(<span class="function">sorted</span>(<span class="identifier">t</span>))
+    <span class="builtin">print</span>(<span class="function">sorted</span>(<span class="identifier">t</span>, <span class="parameter">key</span><span class="operator">=</span><span class="function">len</span>))
+
+    <span class="comment">#!  sort函数的key参数也是有的，效果和sorted相同，但也要注意sort函数没有返回值</span>
+    <span class="builtin">print</span>(<span class="identifier">t</span>.<span class="function">sort</span>(<span class="parameter">key</span><span class="operator">=</span><span class="function">len</span>))
+    <span class="builtin">print</span>(<span class="identifier">t</span>)
+    </code></pre>
+
+    <h3 class="h2_cls" id="14">十四、reverse与reversed函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#?   回顾一下，列表有reverse函数，将列表根据数值就地倒序，没有返回值，那么序列也有倒序函数，它就是reversed</span>
+    <span class="comment">#TODO   reversed函数将序列倒序的结果作为一个迭代器返回，可以用list函数将这个迭代器转化为列表展现</span>
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="module">[1, 2, 5, 8, 0]</span>
+    <span class="builtin">print</span>(<span class="function">reversed</span>(<span class="identifier">s</span>))
+    <span class="identifier">sl</span> <span class="operator">=</span> <span class="function">list</span>(<span class="function">reversed</span>(<span class="identifier">s</span>))
+    <span class="builtin">print</span>(<span class="identifier">sl</span>)
+    <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="function">reverse</span>())
+    <span class="builtin">print</span>(<span class="identifier">s</span>)
+
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="string">"I love Study"</span>
+    <span class="builtin">print</span>(<span class="function">reversed</span>(<span class="identifier">s</span>))
+    <span class="identifier">s</span> <span class="operator">=</span> <span class="module">(1, 2, 5, 9, 3)</span>
+    <span class="builtin">print</span>(<span class="function">reversed</span>(<span class="identifier">s</span>))
+    <span class="builtin">print</span>(<span class="function">reversed</span>(<span class="function">range</span>(<span class="number">0</span>,<span class="number">10</span>)))
+    </code></pre>
+
+    <h3 class="h2_cls" id="15">十五、all与any函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 1, 0]</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="module">[1, 1, 9]</span>
+    <span class="builtin">print</span>(<span class="function">all</span>(<span class="identifier">x</span>))   <span class="comment">#*all函数判断序列是否每个元素为真</span>
+    <span class="builtin">print</span>(<span class="function">any</span>(<span class="identifier">y</span>))   <span class="comment">#*any函数判断序列是否有一个元素为真</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="16">十六、enumerate函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">seasons</span> <span class="operator">=</span> <span class="module">["Spring", "Summer", "Autunm", "Winter"]</span>
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="function">enumerate</span>(<span class="identifier">seasons</span>)))
+    <span class="comment">#TODO   enumerate函数将根据参数里面的可迭代对象创建一个枚举对象，可以用list函数，</span>
+    <span class="comment">#TODO   将枚举对象转化成列表打印出来。</span>
+    <span class="comment">#TODO   enumerate参数的可迭代对象的每一个元素，都会配以一个整数，构成一个二元组，</span>
+    <span class="comment">#TODO   这些整数为从0开始的索引，可以指定enumerate的第二个参数，作为索引开始，而不是从0开始。</span>
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="function">enumerate</span>(<span class="identifier">seasons</span>,<span class="number">10</span>)))
+    </code></pre>
+
+    <h3 class="h2_cls" id="17">十七、zip函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 2, 3]</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="module">[4, 5, 6]</span>
+    <span class="identifier">zipped</span> <span class="operator">=</span> <span class="function">zip</span>(<span class="identifier">x</span>, <span class="identifier">y</span>)
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="identifier">zipped</span>))
+    <span class="comment">#TODO   zip函数将两个可迭代对象连接起来组成一个新的迭代器。可以用list函数将他们转化为列表</span>
+    <span class="comment">#TODO   连接的法则是：下标相同的组合成一个二元组。</span>
+    <span class="identifier">z</span> <span class="operator">=</span> <span class="module">[7, 8, 9]</span>
+    <span class="identifier">zipped</span> <span class="operator">=</span> <span class="function">zip</span>(<span class="identifier">x</span>, <span class="identifier">y</span>, <span class="identifier">z</span>)
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="identifier">zipped</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="18">十八、iteretools的zip_loggest函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#?  那么如果z长度为4，也就是说有4个元素呢？这时候第四个元素由于没有匹配对象，所以第四个元素没有被连接</span>
+    <span class="comment">#?  那么如果我还是需要这第四个元素呢？可以考虑itertools模块里面的zip_longest函数，</span>
+    <span class="comment">#*  这时候，即使没有与之下标相同的元素，最远的元素也会被保留下来</span>
+    <span class="keyword">import</span> <span class="module">itertools</span>
+    <span class="identifier">zipped</span> <span class="operator">=</span> <span class="module">itertools</span>.<span class="function">zip_longest</span>(<span class="identifier">x</span>,<span class="identifier">y</span>,<span class="identifier">z</span>)
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="identifier">zipped</span>))
+    </code></pre>
+
+    <h3 class="h2_cls" id="19">十九、map函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#*  下面介绍加工函数map，map函数有多个参数，第一个参数是加工函数，通常是某些函数，</span>
+    <span class="comment">#*  之后的参数个数取决于前面那个加工函数，如果加工函数只需要一个参数，那么后面就只需要一个可迭代对象</span>
+    <span class="comment">#*  比如说ord函数，得到参数的阿斯克编码。如果加工函数需要两个参数，那么后面就要有两个可迭代对象，</span>
+    <span class="comment">#*  比如说pow函数，计算次方。</span>
+    <span class="comment">#TODO   总之，map函数将对可迭代对象的每个元素都进行一次函数操作，将计算结果返回一个迭代器，</span>
+    <span class="comment">#TODO   这样避免了多次使用函数操作可迭代对象的情况。</span>
+    <span class="identifier">mapped</span> <span class="operator">=</span> <span class="function">map</span>(<span class="function">ord</span>,<span class="string">"I love Study"</span>)
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="identifier">mapped</span>))
+    <span class="identifier">mapped</span> <span class="operator">=</span> <span class="function">map</span>(<span class="function">pow</span>,<span class="module">[2,3,10]</span>, <span class="module">[5, 2, 3]</span>)   <span class="comment">#TODO   求2五次方，3两次方，10三次方</span>
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="identifier">mapped</span>))
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="function">map</span>(<span class="function">max</span>, <span class="module">[1, 3, 5]</span>, <span class="module">[2, 2, 2]</span>, <span class="module">[0, 3, 9, 8]</span>)))
+    <span class="comment">#TODO   如果参数的可迭代对象的长度不一样，如上面的3：3：4类型，那么4中超出的部分就会被抛弃</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="20">二十、filter函数与map函数进阶<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#*  filter函数和map函数类似，第一个参数也是函数，后面的参数也由函数确定，</span>
+    <span class="comment">#*  但是filter函数与map函数不同的是，map函数将返回计算的结果，</span>
+    <span class="comment">#*  而filter函数的第一个参数通常叫做过滤函数，将可迭代对象的每个元素用过滤函数进行判断</span>
+    <span class="comment">#*  结果为真，那么返回这个元素本身，而不是返回计算的结果</span>
+    <span class="builtin">print</span>(<span class="function">list</span>(<span class="function">filter</span>(<span class="function">str.islower</span>,<span class="string">"I love Study"</span>)))
+
+    <span class="comment">#?  那么怎么得到返回的每个结果呢？map函数返回计算的结果，我怎么一个个得到呢？</span>
+
+    <span class="comment">#?  filter返回结果为真的元素，我怎么一个个得到他们呢？</span>
+    <span class="comment">#*  可以考虑用for循环得到每个结果</span>
+    <span class="identifier">mapped</span> <span class="operator">=</span> <span class="function">map</span>(<span class="function">ord</span>,<span class="string">"I love Study"</span>)
+    <span class="keyword">for</span> <span class="identifier">each</span> <span class="operator">in</span> <span class="identifier">mapped</span>:
+        <span class="builtin">print</span>(<span class="identifier">each</span>)
+    <span class="builtin">print</span>(<span class="identifier">mapped</span>)
+    <span class="comment">#!  我们知道mapped是一个存放迭代器的变量，经过for循环，其中的每个元素都被得到了</span>
+    <span class="comment">#!  这时候再看mapped本身，已经是空的了，这是因为迭代器是一次性使用的，</span>
+    <span class="comment">#!  而可迭代对象是可以重复使用的，如列表，字符串，元组。</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="21">二十一、iter函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   我们可以用iter函数，将可迭代对象转化为迭代器</span>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">[1, 2, 3, 4, 5]</span>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="function">iter</span>(<span class="identifier">x</span>)
+    <span class="builtin">print</span>(<span class="function">type</span>(<span class="identifier">x</span>))
+    <span class="builtin">print</span>(<span class="function">type</span>(<span class="identifier">y</span>))
+    <span class="comment">#*  通过type函数可以看到他们的类型</span>
+    </code></pre>
+
+    <h3 class="h2_cls" id="22">二十二、next函数<span><a href="#0" class="back">回顶</a></span></h3> 
+
+    <pre><code>
+    <span class="comment">#TODO   通过next函数，将迭代器每个元素取出来</span>
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">y</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">y</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">y</span>))
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">y</span>))
+    <span class="identifier">z</span> <span class="operator">=</span> <span class="function">iter</span>(<span class="identifier">x</span>)
+    <span class="builtin">print</span>(<span class="function">next</span>(<span class="identifier">z</span>, <span class="string">"无了"</span>))
+    <span class="comment">#*  我们可以指定next函数的第二个参数，这是一个字符串，当迭代器取不出元素时，</span>
+    <span class="comment">#*  我们输出这个字符串</span>
+                </code>
+            </pre>
+        </main>
+    </div>
+    <footer>
+        <div class="footer_cls">
+            <p class="footer_text_cls">
+                版权信息：<br>  <span><a href="#0" class="back">回顶</a></span>
+                学校：江西师范大学；学院：计算机信息工程学院；班级：计算机科学与技术2班；姓名：邓润华；
+                学号：202226202039；email：2312666252@qq.com；<br>
+                本网站为邓润华的独立创作成果，未经许可，不可转载。
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
