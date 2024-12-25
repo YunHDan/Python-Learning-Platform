@@ -20,4 +20,4 @@ How to use?
    - HTML Boilerplate
    - Live Server
 
-4.Finally, right-click "Open with Live Server" in index.html.
+4.   Finally, right-click "Open with Live Server" in index.html.
