@@ -1,4 +1,4 @@
-# pylp.github.io
+# Python-Learning-Platform
 A static website for python learning.
 Overview:
 ![image](https://github.com/user-attachments/assets/40f63190-5a4d-4a02-886b-292fb56009a8)
