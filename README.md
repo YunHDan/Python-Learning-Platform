@@ -11,3 +11,8 @@ What we need to do in future are follows:
 1.  Change the font style of the hightlight code.
 2.  Enrich the content of Python knowledge.
 3.  Give a domain name for the static python learning platform.
+
+How to use?
+1.  Clone it down.
+2.  Open Visual Studio Code.
+3.  Make Sure your Visual Studio Code have a plugin called 
