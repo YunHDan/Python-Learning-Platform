@@ -19,4 +19,5 @@ How to use?
    - HTML CSS Support
    - HTML Boilerplate
    - Live Server
+
 4.Finally, right-click "Open with Live Server" in index.html.
