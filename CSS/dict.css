@@ -11,7 +11,7 @@
 }
 .logo_cls {
     border-style: solid;
-    border-color: white;
+    border-color: White;
     overflow: hidden;
     transition-property: border-radius;
     transition-duration: 1.2s;

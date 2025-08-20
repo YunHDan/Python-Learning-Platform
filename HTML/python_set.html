@@ -58,128 +58,279 @@
 
     <h3 class="h2_cls" id="1">一、创建字典<span><a href="#0" class="back">回顶</a></span></h3> 
 
-    <pre><code>
-    <span class="comment">'''
-        和高中学的一样，集合的元素是互异的，我们可以像创建字典一样创建一个集合，类型是set
-    '''</span>
-    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">{"I", "love", "Study"}</span>
-    
-    <span class="comment">#*  也可以考虑使用列表推导式构建一个集合，如：</span>
-    <span class="identifier">y</span> <span class="operator">=</span> <span class="module">{s for s in "I love Python"}</span>
-    
-    <span class="comment">#*  我们可以将字符串，元组，列表转化为集合，由于互异性，相同的元素会被合并，</span>
-    <span class="comment">#*  我们可以考虑使用set函数，将返回序列转化的集合</span>
-    <span class="comment">#!  对于元组和列表，他们的每个元素都被作为集合中的元素，对于字符串，</span>
-    <span class="comment">#!  并不是整个字符串作为集合的元素，而是将字符串作为一个可迭代对象，迭代其中的每个元素作为集合元素</span>
-    <span class="identifier">z</span> <span class="operator">=</span> <span class="module">set("I love studing Python")</span>
-    <span class="builtin">print</span>(<span class="identifier">x</span>, <span class="identifier">y</span>, <span class="identifier">z</span>)
-    <span class="comment">#!  x[0]是不被允许的，因为集合无序，因此不存在索引下标</span>
+    <p class="text_cls">
+        和高中学的一样，集合的元素是互异的，我们可以像创建字典一样创建一个集合，类型是set。
+    </p>
 
-    <span class="comment">#*  集合是一个可迭代对象，其中的每个元素都可以被取出来，只需要一个for循环</span>
+    <pre><code>
+    <span class="identifier">x</span> <span class="operator">=</span> <span class="module">{"I", "love", "Study"}</span>
+    </code></pre>
+
+    <p class="text_cls">
+        也可以考虑使用列表推导式构建一个集合，如：
+    </p>
+    
+    <pre><code>
+    <span class="identifier">y</span> <span class="operator">=</span> <span class="module">{s for s in "I love Python"}</span>
+    </code></pre>
+
+    <p class="text_cls">
+        我们可以将字符串，元组，列表转化为集合，由于互异性，相同的元素会被合并。
+    </p>
+
+    <p class="text_cls">
+        我们可以考虑使用set函数，将返回序列转化的集合。
+    </p>
+
+    <p class="text_cls">
+        对于元组和列表，他们的每个元素都被作为集合中的元素，对于字符串，并不是整个字符串作为集合的元素，而是将字符串作为一个可迭代对象，迭代其中的每个元素作为集合元素。
+    </p>
+
+    <pre><code>
+    <span class="identifier">z</span> <span class="operator">=</span> <span class="module">set("I love studing Python")</span>
+    </code></pre>
+
+    <p class="text_cls">
+        x[0]是不被允许的，因为集合无序，因此不存在索引下标。
+    </p>
+
+    <p class="text_cls">
+        集合是一个可迭代对象，其中的每个元素都可以被取出来，只需要一个for循环。
+    </p>
+
+    <pre><code>
     <span class="keyword">for</span> <span class="identifier">each</span> <span class="operator">in</span> <span class="identifier">x</span>:
         <span class="builtin">print</span>(<span class="identifier">each</span>)
     </code></pre>
 
+    <p class="text_cls">
+        打印结果：<br>
+        "I"<br>
+        "love"<br>
+        "Study"<br>
+    </p>
+
+
     <h3 class="h2_cls" id="2">二、用in与not in进行子集判断<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        高中集合相互有关系，比如谁是谁的子集等等，那么怎么判断一个集合是否在另一个集合内？
+    </p>
+
+    <p class="text_cls">
+        可以考虑使用in 和not in关键字，他们作用于两个集合。
+    </p>
+
     <pre><code>
-    <span class="comment">#?  高中集合相互有关系，比如谁是谁的子集等等，那么怎么判断一个集合是否在另一个集合内？</span>
-    <span class="comment">#*  可以考虑使用in 和not in关键字，他们作用于两个集合</span>
     <span class="builtin">print</span>(<span class="string">"Study"</span> <span class="operator">in</span> <span class="identifier">x</span>)
     <span class="builtin">print</span>(<span class="string">"Study"</span> <span class="operator">not in</span> <span class="identifier">y</span>)
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        True<br>
+        True<br>
+    </p>
+
     <h3 class="h2_cls" id="3">三、集合的len函数<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        集合也有长度，为元素个数，有时候它和原来的序列不一样。
+    </p>
+
     <pre><code>
-    <span class="comment">#*  集合也有长度，为元素个数，有时候它和原来的序列不一样</span>
     <span class="identifier">s</span> <span class="operator">=</span> <span class="module">[1, 1, 2, 3, 5]</span>
     <span class="builtin">print</span>(<span class="builtin">len</span>(<span class="identifier">s</span>) <span class="operator">==</span> <span class="builtin">len</span>(<span class="module">set(s)</span>))
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        False
+    </p>
+
+    <p class="text_cls">
+        这是因为集合各个元素是相异的，列表则允许元素相同，因此前者为5，后者为4。
+    </p>
+
     <h3 class="h2_cls" id="4">四、集合的拷贝<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        如果我们想将一个集合拷贝，怎么做？
+    </p>
+
+    <p class="text_cls">
+        没错，copy方法，实现浅拷贝。如果s = {"1","2","1","3","4"}，则下面的语句：
+    </p>
+
     <pre><code>
-    <span class="comment">#?  如果我们想将一个集合拷贝，怎么做？</span>
-    <span class="comment">#*  没错，copy方法，实现浅拷贝</span>
     <span class="identifier">t</span> <span class="operator">=</span> <span class="identifier">s</span>.<span class="builtin">copy</span>()
     <span class="builtin">print</span>(<span class="identifier">t</span>)
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        {'1', '2', '4', '3'}
+    </p>
+
     <h3 class="h2_cls" id="5">五、isdisjoint函数<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        下面我们开始涉及一些集合关系的方法函数，这些集合关系判断方法有个需要注意的地方。
+    </p>
+
+    <p class="text_cls">
+        就是他们的参数可以是一个集合，也可以是一个可迭代对象，当为可迭代对象时，这些判断方法一般将可迭代对象自动转化为集合
+    </p>
+
+    <p class="text_cls">
+        怎么判断两个集合是否没有交集，也就是彼此是独立的？
+    </p>
+
+    <p class="text_cls">
+        考虑使用isdisjoint方法，它作用于一个集合，以另一个集合作为参数，
+        它判断两个集合中是否有共同元素，如果有，说明不是相互独立，返回False，反之，返回True。
+    </p>
+
     <pre><code>
-    <span class="comment">#*  下面我们开始涉及一些集合关系的方法函数，这些集合关系判断方法有个需要注意的地方</span>
-    <span class="comment">#*  就是他们的参数可以是一个集合，也可以是一个可迭代对象，当为可迭代对象时，</span>
-    <span class="comment">#*  这些判断方法一般将可迭代对象自动转化为集合</span>
-    
-    <span class="comment">#?  怎么判断两个集合是否没有交集？也就是彼此是独立的</span>
-    <span class="comment">#*  考虑使用isdisjoint方法，它作用于一个集合，以另一个集合作为参数</span>
-    <span class="comment">#*  它判断两个集合中是否有共同元素，如果有，说明不是相互独立，返回False，</span>
-    <span class="comment">#*  反之，返回True</span>
     <span class="identifier">s</span> <span class="operator">=</span> <span class="module">set("Python")</span>
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">isdisjoint</span>(<span class="module">set("Study")</span>))
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">isdisjoint</span>(<span class="module">("Java")</span>))
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        False (也就是有交集)<br>
+        True (没有交集)<br>
+    </p>
+
     <h3 class="h2_cls" id="6">六、issubset函数<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        怎么判断一个集合是另一个集合的子集？这很经典。
+    </p>
+
+    <p class="text_cls">
+        我们考虑使用issubset方法，它判断前面的集合是否是后面参数里集合的子集，是则True，不是则False。比如，当s = set("Python")时，
+        下面的语句：
+    </p>
+
     <pre><code>
-    <span class="comment">#?  怎么判断一个集合是另一个集合的子集？这很经典</span>
-    <span class="comment">#*  我们考虑使用issubset方法，它判断前面的集合是否是后面参数里集合的子集，</span>
-    <span class="comment">#*  是则True，不是则False</span>
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">issubset</span>(<span class="module">set("I love Python")</span>))
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        True
+    </p>
+
     <h3 class="h2_cls" id="7">七、issuperset方法<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        怎么判断一个集合是另一个集合的父集(超集)？考虑issuperset方法。
+    </p>
+
+    <p class="text_cls">
+        依然，当s = set("Python")时，下面的语句：
+    </p>
+
     <pre><code>
-    <span class="comment">#?  怎么判断一个集合是另一个集合的父集？</span>
-    <span class="comment">#*  考虑issuperset方法</span>
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">issuperset</span>(<span class="string">"Py"</span>))
-    
-    <span class="comment">#!  下面是一些集合操作函数，他们都有返回值，返回值就是满足要求的集合，</span>
-    <span class="comment">#!  但是他们都有一个共同点，就是它们不改变原有的集合</span>
     </code></pre>
+
+    <p class="text_cls">
+        输出：<br>
+        True
+    </p>
+
+    <p class="text_cls">
+        下面是一些集合操作函数，他们都有返回值，返回值就是满足要求的集合，但是他们都有一个共同点，就是它们不改变原有的集合。
+    </p>
 
     <h3 class="h2_cls" id="8">八、并集运算union<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        怎么得到两个集合的并集呢？ 
+    </p>
+
+    <p class="text_cls">
+        考虑union函数,union函数与众不同，可以是一个参数，也可以是两个参数。依然，当s = set("Python")时，下面的语句：  
+    </p>
+
     <pre><code>   
-    <span class="comment">#?  怎么得到两个集合的并集呢？</span>
-    <span class="comment">#*  考虑union函数,union函数与众不同，可以是一个参数，也可以是两个参数</span>
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">union</span>(<span class="module">{1, 2, 3}</span>))
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">union</span>(<span class="module">{1, 2, 3}</span>, <span class="string">"I love"</span>))
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        {1, 2, 3, 'y', 't', 'h', 'o', 'P', 'n'}<br>
+        {1, 2, 3, 'y', 'I', 't', 'h', ' ', 'v', 'o', 'l', 'P', 'n', 'e'}
+    </p>
+
     <h3 class="h2_cls" id="9">九、差集运算difference<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        有一个集合A和另一个集合B，对于A，其中和B元素不同的元素构成一个集合，称为A相对于B的差集。
+    </p>
+
+    <p class="text_cls">
+        那么怎么得到A相对于B的差集呢？考虑使用difference函数。
+    </p>
+
     <pre><code>  
-    <span class="comment">#?  有一个集合A和另一个集合B，对于A，其中和B元素不同的元素构成一个集合，称为A相对于B的差集</span>
-    <span class="comment">#?  那么怎么得到A相对于B的差集呢？</span>
-    <span class="comment">#*  考虑使用difference函数</span>
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">difference</span>(<span class="string">"Py"</span>))
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        {'o', 't', 'n', 'h'}
+    </p>
+
     <h3 class="h2_cls" id="10">十、对称差集symmetric_difference<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        我们不是想得到A相对于B的差集，而是想将A和B中相同的元素删除，得到一个新的集合呢？
+    </p>
+
+    <p class="text_cls">
+        这就是A和B的对称差集，考虑使用symmetric_difference函数。
+    </p>
+
     <pre><code> 
-    <span class="comment">#?  我们不是想得到A相对于B的差集，而是想将A和B中相同的元素删除，得到一个新的集合呢？</span>
-    <span class="comment">#*  这就是A和B的对称差集，考虑使用symmetric_difference函数</span>
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">symmetric_difference</span>(<span class="module">"Study"</span>))
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        {'d', 'S', 'h', 'u', 'o', 'P', 'n'} 
+    </p>
+
     <h3 class="h2_cls" id="11">十一、多集合交集运算intersection<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        我们怎么得到多个集合的交集呢？考虑intersection函数，参数有多个，对应多个集合。
+    </p>
+
+    <p class="text_cls">
+        考虑intersection函数，参数有多个，对应多个集合。
+    </p>
+
     <pre><code> 
-    <span class="comment">#?  我们怎么得到多个集合的交集呢？</span>
-    <span class="comment">#*  考虑intersection函数，参数有多个，对应多个集合</span>
     <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="builtin">intersection</span>(<span class="module">"Php"</span>, <span class="module">"Study"</span>))
     </code></pre>
 
+    <p class="text_cls">
+        输出：<br>
+        set() (表明输出是一个空集)
+    </p>
+
     <h3 class="h2_cls" id="12">十二、集合的运算符<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        运算符在集合中发挥了很重要的作用，它们同样可以实现上面的效果。
+    </p>
+
     <pre><code> 
-    <span class="comment">#!  运算符在集合中发挥了很重要的作用，它们同样可以实现上面的效果</span>
     <span class="identifier">s</span> <span class="operator">=</span> <span class="module">set("Python")</span>
     <span class="builtin">print</span>(<span class="identifier">s</span> <span class="operator">&lt;=</span> <span class="module">set("Python")</span>)   <span class="comment">#TODO   子集</span>
     <span class="builtin">print</span>(<span class="identifier">s</span> <span class="operator">&lt;</span> <span class="module">set("Py")</span>)    <span class="comment">#TODO   真子集</span>
@@ -189,31 +340,75 @@
     <span class="builtin">print</span>(<span class="identifier">s</span> <span class="operator">&amp;</span> <span class="module">set("Php")</span> <span class="operator">&amp;</span> <span class="module">set("Study")</span>)    <span class="comment">#TODO   求交集</span>
     <span class="builtin">print</span>(<span class="identifier">s</span> <span class="operator">-</span> <span class="module">set("Php")</span> <span class="operator">-</span> <span class="module">set("Study")</span>)    <span class="comment">#TODO   求相对于s的差集，支持多个集合</span>
     <span class="builtin">print</span>(<span class="identifier">s</span> <span class="operator">^</span> <span class="module">set("Study")</span>) <span class="comment">#TODO   求对称差集</span>
-    <span class="comment">#!  s &lt;= "Study"是不被允许的</span>
     </code></pre>
+
+    <p class="text_cls">
+        注意，s &lt;= "Study"是不被允许的。
+    </p>
+
+    <p class="text_cls">
+        输出： <br>
+        True <br>
+        False <br>
+        False <br>
+        True <br>
+        {1, 2, 3, 'd', 'y', 'S', 't', 'h', 'o', 'u', 'P', 'n'} <br>
+        set() <br>
+        {'o', 'n'} <br>
+        {'d', 'u', 'o', 'h', 'P', 'S', 'n'}
+    </p>
 
     <h3 class="h2_cls" id="13">十三、frozeset函数<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        一般的集合set是一个可变容器，而集合类型frozenset是一个不可变容器，里面的元素不可以被改变。
+    </p>
+
+    <p class="text_cls"> 
+        可以使用frozenset函数将可迭代对象：字符串，元组，列表，转化为不可变集合。
+    </p>
+
     <pre><code> 
-    <span class="comment">#!  一般的集合set是一个可变容器，而集合类型frozenset是一个不可变容器，里面的元素不可以被改变</span>
-    <span class="comment">#*  可以使用frozenset函数将可迭代对象：字符串，元组，列表，转化为不可变集合</span>
     <span class="identifier">t</span> <span class="operator">=</span> <span class="builtin">frozenset</span>(<span class="string">"Study"</span>)
     <span class="builtin">print</span>(<span class="identifier">t</span>)
     </code></pre>
 
+    <p class="text_cls">
+        输出： <br>
+        frozenset({'d', 'y', 'S', 't', 'u'}) 
+    </p>
+
     <h3 class="h2_cls" id="14">十四、集合的自更新函数<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        既然集合set类型是一个可变容器，如何给集合增加元素？
+    </p>
+
+    <p class="text_cls">
+        考虑update方法，它将集合set就地改造成新的集合。值得注意的是，它没有返回值。
+    </p>
+
     <pre><code> 
-    <span class="comment">#?  既然集合set类型是一个可变容器，如何给集合增加元素？</span>
-    <span class="comment">#*  考虑update方法，它将集合set就地改造成新的集合</span>
-    <span class="comment">#! 值得注意的是，它没有返回值</span>
     <span class="identifier">s</span> <span class="operator">=</span> <span class="module">set("Python")</span>
     <span class="identifier">s</span>.<span class="builtin">update</span>(<span class="module">[1, 1]</span>, <span class="string">"Study"</span>)
     <span class="builtin">print</span>(<span class="identifier">s</span>)
-    <span class="comment">#*  另外，update方法实质也是求并集的过程，以上面为例子，它将[1, 1]和"Study"并入s中</span>
-    <span class="comment">#*  如此而来，下面的方法就是将集合就地改造了</span>
-    <span class="comment">#TODO   intersection_update:得到交集， difference_update:得到相对差集，</span>
-    <span class="comment">#TODO   symmetric_difference_update:得到对称差集</span>
+    </code></pre>
+
+    <p class="text_cls">
+        输出：<br>
+        {1, 'd', 'y', 'S', 'h', 't', 'o', 'u', 'P', 'n'} <br>
+    </p>
+
+    <p class="text_cls">
+        另外，update方法实质也是求并集的过程，以上面为例子，它将[1, 1]和"Study"并入s中。<br>
+        如此而来，下面的方法就是将集合就地改造了。
+    </p>
+
+    <p class="text_cls">
+        intersection_update:得到交集， difference_update:得到相对差集，symmetric_difference_update:得到对称差集。
+    </p>
+
+    <pre><code>
     <span class="identifier">s</span> <span class="operator">=</span> <span class="module">set("Python")</span>
     <span class="identifier">s</span>.<span class="function">intersection_update</span>(<span class="string">"Php"</span>, <span class="string">"Pop"</span>)
     <span class="builtin">print</span>(<span class="identifier">s</span>)
@@ -225,76 +420,169 @@
     <span class="builtin">print</span>(<span class="identifier">s</span>)
     </code></pre>
 
+    <p class="text_cls">
+        输出： <br>
+        {'P'} <br>
+        {'o', 'n'} <br>
+        {'d', 'S', 'h', 'o', 'u', 'P', 'n'} <br>
+    </p>
+
     <h3 class="h2_cls" id="15">十五、add方法<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        不是想求并集，而是单纯想将某个元素插入。
+    </p>
+
+    <p class="text_cls">
+        考虑add方法。如果参数是字符串，那么它将字符串整体作为元素，而不是将字符串中的字符一个个取出来，这和之前的update有所不同。
+    </p>
+
     <pre><code> 
-    <span class="comment">#?  不是想求并集，而是单纯想将某个元素插入</span>
-    <span class="comment">#*  考虑add方法</span>
-    <span class="comment">#!  如果参数是字符串，那么它将字符串整体作为元素，</span>
-    <span class="comment">#!  而不是将字符串中的字符一个个取出来，这和之前的update有所不同</span>
     <span class="identifier">s</span> <span class="operator">=</span> <span class="module">set("Python")</span>
     <span class="identifier">s</span>.<span class="function">add</span>(<span class="string">"45"</span>)
     <span class="builtin">print</span>(<span class="identifier">s</span>)
     </code></pre>
 
+    <p class="text_cls">
+        输出： <br>
+        {'y', 'h', 't', 'o', 'P', '45', 'n'}
+    </p>
+
     <h3 class="h2_cls" id="16">十六、discard方法<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        我们可以用remove删除集合的元素(见Section十七)。
+        可是如果没有这个元素，remove会报异常，想要不报出异常，怎么做？
+    </p>
+
+    <p class="text_cls">
+        依然给定s = set("Python")。我们可以使用discard方法删除集合的元素。
+    </p>
+
     <pre><code> 
-    <span class="comment">#!  可是如果没有这个元素，remove会报异常，想要不报出异常，怎么做？</span>
-    <span class="comment">#*  考虑discard方法</span>
     <span class="identifier">s</span>.<span class="function">discard</span>(<span class="string">"S"</span>)
-    <span class="builtin">print</span>(<span class="identifier">s</span>)
-    <span class="comment">#*  没有反应</span>
     </code></pre>
+
+    <p class="text_cls">
+        没有反应，不报错。
+    </p>
+
+    <pre><code>
+    <span class="builtin">print</span>(<span class="identifier">s</span>)
+    </code></pre>
+
+    <p class="text_cls">
+        输出： <br>
+        {'y', 'h', 't', 'o', 'P', 'n'} <br>
+    </p>
 
     <h3 class="h2_cls" id="17">十七、集合的删除<span><a href="#0" class="back">回顶</a></span></h3> 
 
-    <pre><code> 
-    <span class="comment">#?  怎么删除集合中的元素呢</span>
-    <span class="comment">#*  我们来考虑一下pop方法，它将集合就地删除一个随机的元素，</span>
-    <span class="comment">#*  为什么是随机，这是因为集合是无序的</span>
-    <span class="comment">#!  值得注意的是，pop方法可以返回一个值，即为被删除的元素</span>
-    <span class="identifier">s</span>.<span class="function">pop</span>()
-    <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="function">pop</span>())
+    <p class="text_cls">
+        怎么删除集合中的元素呢？
+    </p>
 
-    <span class="comment">#?  如果想删除整个集合中的元素，怎么做？</span>
-    <span class="comment">#*  考虑clear方法,它没有返回值</span>
+    <p class="text_cls">
+        我们来考虑一下pop方法，它将集合就地删除一个随机的元素。为什么是随机，这是因为集合是无序的。
+        值得注意的是，pop方法可以返回一个值，即为被删除的元素。
+    </p>
+
+    <pre><code> 
+    <span class="identifier">s</span>.<span class="function">pop</span>()
+    </code></pre>
+
+    <p class="text_cls">
+        输出： <br>
+        'y' <br>
+    </p>
+
+    <pre><code>
+    <span class="builtin">print</span>(<span class="identifier">s</span>.<span class="function">pop</span>())
+    </code></pre>
+
+    <p class="text_cls">
+        输出：<br>
+        h
+    </p>
+
+    <p class="text_cls">
+        如果想删除整个集合中的元素，怎么做？考虑clear方法,它没有返回值。
+    </p>
+
+    <pre><code>
     <span class="identifier">s</span>.<span class="function">clear</span>()
     <span class="builtin">print</span>(<span class="identifier">s</span>)
+    </code></pre>
 
-    <span class="comment">#?  想删除集合中指定的元素？</span>
-    <span class="comment">#*  使用remove方法</span>
+    <p class="text_cls">
+        输出： <br>
+        set()
+    </p>
+
+    <p class="text_cls">
+        想删除集合中指定的元素？使用remove方法。
+    </p>
+
+    <pre><code>
     <span class="identifier">s</span> <span class="operator">=</span> <span class="module">set("Python")</span>
     <span class="identifier">s</span>.<span class="function">remove</span>(<span class="string">"P"</span>)   <span class="comment">#!  参数只有一个</span>
     <span class="builtin">print</span>(<span class="identifier">s</span>)
     </code></pre>
 
+    <p class="text_cls">
+        输出： <br>
+        {'y', 'h', 't', 'o', 'n'}
+    </p>
+
     <h3 class="h2_cls" id="18">十八、hash函数<span><a href="#0" class="back">回顶</a></span></h3> 
 
+    <p class="text_cls">
+        python对于不可变的对象，赋予其一个属性，称为哈希值。
+        如果一个对象是不可变的，我们说这个对象是可哈希的，它有一个固定的哈希值，比如说字符串，数值，元组。
+        如果说这个对象是可变的，那么这个对象是不可哈希的，它没有哈希值。
+        不可变对象里面的内容是固定的，如果有另一个不可变对象的内容与之相同，那么他们的哈希值是一样的。
+    </p>
+
+    <p class="text_cls">
+        我们可以使用hash函数得到对象的哈希值，如果对象不可变，则抛出异常。
+    </p>
+
     <pre><code> 
-    <span class="comment">#*  python对于不可变的对象，赋予其一个属性，称为哈希值，如果一个对象是不可变的，</span>
-    <span class="comment">#*  我们说这个对象是可哈希的，它有一个固定的哈希值，比如说字符串，数值，元组</span>
-    <span class="comment">#*  如果说这个对象是可变的，那么这个对象是不可哈希的，它没有哈希值</span>
-    <span class="comment">#*  不可变对象里面的内容是固定的，如果有另一个不可变对象的内容与之相同，那么他们的哈希值是一样的</span>
-    <span class="comment">#TODO   我们可以使用hash函数得到对象的哈希值，如果对象不可变，则抛出异常</span>
     <span class="builtin">print</span>(<span class="builtin">hash</span>(<span class="number">1</span>), <span class="builtin">hash</span>(<span class="number">1.0</span>), <span class="builtin">hash</span>(<span class="number">1.001</span>))
     <span class="builtin">print</span>(<span class="builtin">hash</span>(<span class="string">"Study"</span>), <span class="builtin">hash</span>(<span class="module">(1, 2, 3)</span>))
-    <span class="comment">#!  print(hash([1, 2, 3]))抛出异常</span>
+    </code></pre>
 
-    <span class="comment">#*  这通常没有什么用，但是可以帮助我们深入理解字典和集合的一些本质</span>
-    <span class="comment">#*  对于字典，它要求键必须唯一，不能有两个相同的键，而且键必须可哈希，也就是说</span>
-    <span class="comment">#*  我们不能让一个键是一个列表</span>
-    <span class="comment">#*  对于集合，我们要求集合每个元素必须是可哈希的，也就是说，集合的元素不能是列表，</span>
-    <span class="comment">#?  那集合的元素能不能是集合呢？</span>
-    <span class="comment">#*  一般来说是不行的，因为集合的元素必须可哈希，对于set类型的集合当然不行，</span>
-    <span class="comment">#*  但是对于frozenset类型的集合当然是可以的</span>
+    <p class="text_cls">
+        输出：<br>
+        1 1 2305843009213441 <br>
+        5464733446956240229 529344067295497451 <br>
+        print(hash([1, 2, 3]))则会抛出异常。
+    </p>
+
+    <p class="text_cls">
+        这通常没有什么用，但是可以帮助我们深入理解字典和集合的一些本质。
+        对于字典，它要求键必须唯一，不能有两个相同的键，而且键必须可哈希，也就是说，我们不能让一个键是一个列表。
+    </p>
+
+    <p class="text_cls">
+        对于集合，我们要求集合每个元素必须是可哈希的，也就是说，集合的元素不能是列表，那集合的元素能不能是集合呢？
+        一般来说是不行的，因为集合的元素必须可哈希，对于set类型的集合当然不行，但是对于frozenset类型的集合当然是可以的。
+    </p>
+
+    <p class="text_cls">
+        s.add([1, 2, 3])会异常，因为不能将一个列表作为集合元素。s.add(set([1, 2, 3]))也是这样，因为不能将一个set集合作为集合元素
+    </p>
+
+    <pre><code>
     <span class="identifier">s</span> <span class="operator">=</span> <span class="module">set("Python")</span>
-    <span class="comment">#!  s.add([1, 2, 3])会异常，因为不能将一个列表作为集合元素</span>
-    <span class="comment">#!  s.add(set([1, 2, 3]))也是这样，因为不能将一个set集合作为集合元素</span>
     <span class="identifier">s</span>.<span class="function">add</span>(<span class="module">frozenset([1, 2, 3])</span>)
     <span class="builtin">print</span>(<span class="identifier">s</span>)
                 </code>
             </pre>
+    <p class="text_cls">
+        输出： <br>
+        {'y', 'h', 't', 'o', frozenset({1, 2, 3}), 'P', 'n'}
+    </p>
         </main>
     </div>
 </body>
