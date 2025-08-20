@@ -15,4 +15,9 @@ What we need to do in future are follows:
 How to use?
 1.  Clone it down.
 2.  Open Visual Studio Code.
-3.  Make Sure your Visual Studio Code have a plugin called 
+3.  Make Sure your Visual Studio Code have following plugins:
+   - HTML CSS Support
+   - HTML Boilerplate
+   - Live Server
+
+4.   Finally, right-click "Open with Live Server" in index.html.
